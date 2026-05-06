@@ -1,0 +1,172 @@
+[
+  {
+    "id": "bagatelle",
+    "name": "Bagatelle",
+    "address": "Östermalmstorg 2, 114 42 Stockholm",
+    "lat": 59.336,
+    "lon": 18.081,
+    "source_url": "https://www.bagatelle.se/meny",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 79,
+      "kr_per_cl": 1.98
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "bestick",
+    "name": "Bistro Bestick",
+    "address": "Karlavägen 41, 114 49 Stockholm",
+    "lat": 59.3398,
+    "lon": 18.0876,
+    "source_url": "https://www.bestick.nu/meny",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 50,
+      "price_sek": 89,
+      "kr_per_cl": 1.78
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "bobonne",
+    "name": "Brasserie Bobonne",
+    "address": "Storgatan 12, 114 51 Stockholm",
+    "lat": 59.3349,
+    "lon": 18.082,
+    "source_url": "https://www.brasseriebobonne.se/meny",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 85,
+      "kr_per_cl": 2.13
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "godot",
+    "name": "Brasserie Godot",
+    "address": "Grev Turegatan 36, 114 38 Stockholm",
+    "lat": 59.3404,
+    "lon": 18.079,
+    "source_url": "https://godot.se/meny/",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 89,
+      "kr_per_cl": 2.23
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "knut",
+    "name": "Knut Östermalm",
+    "address": "Riddargatan 6, 114 35 Stockholm",
+    "lat": 59.3338,
+    "lon": 18.0804,
+    "source_url": "https://www.knutostermalm.se/meny",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 50,
+      "price_sek": 79,
+      "kr_per_cl": 1.58
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "lisa_elmqvist",
+    "name": "Lisa Elmqvist",
+    "address": "Östermalms Saluhall, Nybrogatan 31, 114 39 Stockholm",
+    "lat": 59.3361,
+    "lon": 18.0795,
+    "source_url": "https://www.lisaelmqvist.se/meny",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 95,
+      "kr_per_cl": 2.38
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "riche",
+    "name": "Riche",
+    "address": "Birger Jarlsgatan 4, 114 34 Stockholm",
+    "lat": 59.3346,
+    "lon": 18.0742,
+    "source_url": "https://www.riche.se/meny/",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 95,
+      "kr_per_cl": 2.38
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "sturehof",
+    "name": "Sturehof",
+    "address": "Stureplan 2, 114 35 Stockholm",
+    "lat": 59.3358,
+    "lon": 18.0743,
+    "source_url": "https://www.sturehof.com/menyer-och-drycker/",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 50,
+      "price_sek": 89,
+      "kr_per_cl": 1.78
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "teatergrillen",
+    "name": "Teatergrillen",
+    "address": "Nybrogatan 3, 114 34 Stockholm",
+    "lat": 59.334,
+    "lon": 18.0764,
+    "source_url": "https://teatergrillen.se/meny/",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 99,
+      "kr_per_cl": 2.48
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  },
+  {
+    "id": "tures",
+    "name": "Tures",
+    "address": "Sibyllegatan 47, 114 42 Stockholm",
+    "lat": 59.3373,
+    "lon": 18.0822,
+    "source_url": "https://www.tures.se/meny",
+    "cheapest_beer": {
+      "name": "Husöl (placeholder)",
+      "volume_cl": 40,
+      "price_sek": 89,
+      "kr_per_cl": 2.23
+    },
+    "last_updated": "2026-05-06T00:00:00+00:00",
+    "stale": true,
+    "stale_reason": "placeholder seed; awaiting first real scrape"
+  }
+]
