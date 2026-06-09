@@ -43,6 +43,32 @@ def fetch(url: str) -> str:
     return resp.text
 
 
+def fetch_bytes(url: str) -> bytes:
+    """Like `fetch` but returns raw bytes (for PDF menus)."""
+    global _last_request_at
+    elapsed = time.monotonic() - _last_request_at
+    if elapsed < RATE_LIMIT_S:
+        time.sleep(RATE_LIMIT_S - elapsed)
+    resp = requests.get(
+        url,
+        headers={"User-Agent": USER_AGENT, "Accept-Language": "sv,en;q=0.8"},
+        timeout=REQUEST_TIMEOUT_S,
+    )
+    _last_request_at = time.monotonic()
+    resp.raise_for_status()
+    return resp.content
+
+
+def fetch_pdf_text(url: str) -> str:
+    """Fetch a PDF and return its extracted plain text."""
+    import io
+
+    from pypdf import PdfReader
+
+    reader = PdfReader(io.BytesIO(fetch_bytes(url)))
+    return "\n".join(page.extract_text() or "" for page in reader.pages)
+
+
 @dataclass(frozen=True)
 class Beer:
     name: str
@@ -208,6 +234,25 @@ def find_cheapest_beer_svbr(html: str) -> Beer | None:
             name = _strip(name_el.get_text(" ")) if name_el else text
             beer = Beer(name=name[:80], volume_cl=volume, price_sek=price)
             candidates.append((beer, bool(_NON_ALC_RE.search(text))))
+    return _cheapest(candidates)
+
+
+def find_cheapest_beer_in_text(text: str) -> Beer | None:
+    """Scan plain-text lines (e.g. extracted from a PDF menu) for beers."""
+    candidates: list[tuple[Beer, bool]] = []
+    for raw in text.splitlines():
+        line = _strip(raw)
+        if not line or len(line) > 160 or not is_beer_line(line):
+            continue
+        parsed = parse_price_and_volume(line)
+        if parsed is None:
+            continue
+        price, volume = parsed
+        name = _VOL_PRICE_PAIR_RE.sub(" ", line)
+        name = _BARE_PRICE_RE.sub(" ", name)
+        name = _strip(_VOLUME_RE.sub(" ", name)).strip(",.-–/ ")
+        beer = Beer(name=(name or line)[:80], volume_cl=volume, price_sek=price)
+        candidates.append((beer, bool(_NON_ALC_RE.search(line))))
     return _cheapest(candidates)
 
 

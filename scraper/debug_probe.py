@@ -26,7 +26,7 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "sv-SE,sv;q=0.9,en;q=0.8",
 }
-TIMEOUT = 15
+TIMEOUT = 25
 MENU_LINK_RE = re.compile(r"meny|menu|dryck|drink|bar(?:en)?\b|vinlista", re.I)
 BEER_RE = re.compile(
     r"öl|beer|fatöl|ipa|lager|pils|stout|porter|witbier|weiss|ale\b"
@@ -40,22 +40,20 @@ HTML_DIR = Path("html")
 
 # (label, url, options) — options: follow (probe menu links), links (dump all
 # links), sections (dump text after dryck/öl/bar headings), svbr (dump all
-# Svenska Brasserier menu items with their section titles).
+# Svenska Brasserier menu items with their section titles), fulltext (dump
+# the whole visible text). PDF responses get their text lines dumped.
 PROBES = [
-    # Existing restaurants that still need DOM evidence
-    ("teatergrillen", "https://teatergrillen.se/meny/", {"svbr"}),
-    ("godot_root", "https://godot.se/", {"follow", "links"}),
-    ("bobonne_menyer", "https://bobonne.se/menyer/", {"sections", "links"}),
-    ("lisa_elmqvist", "https://www.lisaelmqvist.se/restaurang/restaurangmeny", {"links"}),
-    # Replacement candidates, round 2
-    ("hillenberg_baren", "https://hillenberg.se/baren/", {"sections", "links"}),
-    ("nybrogatan38_menyer", "https://nybrogatan38.com/menyer", {"follow", "links", "sections"}),
-    ("grodan", "https://www.grodan.se/", {"links"}),
-    ("tavernabrillo", "https://www.tavernabrillo.se/meny/", {"svbr", "follow"}),
-    ("east", "https://www.east.se/", {"follow"}),
-    ("astoria", "https://brasserieastoria.com/", {"follow"}),
-    ("paco", "https://pa-co.se/", {"follow"}),
-    ("hantverket", "https://restauranghantverket.se/", {"follow"}),
+    # Existing restaurants that still need evidence
+    ("bobonne_menyer", "https://bobonne.se/menyer/", {"fulltext"}),
+    ("lisa_pdf", "https://www.lisaelmqvist.se/files/restaurang/matochvinmeny.pdf", set()),
+    # PDF drink lists for the two PDF-based replacements
+    ("hillenberg_pdf", "https://hillenberg.se/wp-content/uploads/2026/05/drinklista-var-2026.pdf", set()),
+    ("n38_pdf", "https://static.thatsup.website/329/39579/Drinklista-maj3-26-Charliés.pdf?v=1779401588", set()),
+    # Third-replacement candidates, round 3
+    ("grodan_grevture", "https://www.grodan.se/grevture", {"follow", "links", "sections"}),
+    ("tavernabrillo", "https://taverna-brillo.se/", {"follow"}),
+    ("strandvagen1", "https://strandvagen1.se/", {"follow"}),
+    ("missvoon", "https://missvoon.se/", {"follow"}),
     ("eriks_bakficka", "https://eriks.se/", {"follow"}),
 ]
 
@@ -170,6 +168,28 @@ def dump_links(soup: BeautifulSoup, base: str) -> None:
             break
 
 
+def dump_pdf(content: bytes) -> None:
+    import io
+
+    from pypdf import PdfReader
+
+    text = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(content)).pages)
+    lines = [" ".join(l.split()) for l in text.splitlines()]
+    lines = [l for l in lines if l and (any(c.isdigit() for c in l) or BEER_RE.search(l))]
+    print(f"  [pdf text lines with digits/beer: {len(lines)}]")
+    for line in lines[:100]:
+        print(f"    {line[:110]}")
+    if len(lines) > 100:
+        print("    ... (truncated at 100)")
+
+
+def dump_fulltext(soup: BeautifulSoup) -> None:
+    text = " ".join(soup.get_text(" ", strip=True).split())
+    print(f"  [full visible text, {len(text)} chars]")
+    for i in range(0, min(len(text), 3500), 110):
+        print(f"    {text[i:i + 110]}")
+
+
 def analyse(label: str, url: str, opts: set[str]) -> None:
     print(f"\n===== {label} =====")
     print(f"  url={url}")
@@ -179,6 +199,9 @@ def analyse(label: str, url: str, opts: set[str]) -> None:
         return
     ctype = resp.headers.get("Content-Type", "?")
     print(f"  {resp.status_code} final={resp.url} type={ctype} len={len(resp.content)}")
+    if resp.status_code == 200 and "pdf" in ctype:
+        dump_pdf(resp.content)
+        return
     if resp.status_code != 200 or "html" not in ctype:
         return
     HTML_DIR.mkdir(exist_ok=True)
@@ -200,6 +223,8 @@ def analyse(label: str, url: str, opts: set[str]) -> None:
         dump_svbr_items(soup)
     if "sections" in opts:
         dump_sections(soup)
+    if "fulltext" in opts:
+        dump_fulltext(soup)
     if "links" in opts:
         dump_links(soup, str(resp.url))
 
