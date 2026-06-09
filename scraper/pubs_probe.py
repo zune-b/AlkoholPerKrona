@@ -46,27 +46,44 @@ ADDRESS_RE = re.compile(
 )
 HTML_DIR = Path("html")
 
-# (label, url, options)
+# (label, url, options) — options:
+#   follow    probe menu-ish links from the page
+#   links     dump all links
+#   insecure  fetch with TLS verification disabled (hostname-mismatch certs)
+#   pricelist dump Elementor price-list items with their price span
+#   dl        dump <dl> beer rows (Pet Sounds style)
+#   fulltext  dump the whole visible text
+#   olmeny    follow links whose text contains "meny" (Bishops Arms)
 PROBES = [
-    ("lionbar_root", "https://lionbar.se/", {"follow", "links"}),
-    ("intlbar_www", "https://www.internationalbar.se/", {"follow", "links"}),
-    ("intlbar_bare", "https://internationalbar.se/", {"follow", "links"}),
-    ("kvarnen", "https://kvarnen.com/", {"follow", "links"}),
-    ("olearys", "https://www.olearys.se/", {"follow", "links"}),
-    ("akkurat", "https://www.akkurat.se/", {"follow", "links"}),
-    ("carmen", "https://carmen.nu/", {"follow", "links"}),
-    ("carmen_www", "https://www.carmen.nu/", {"follow"}),
-    ("oliver_twist", "https://www.oliver-twist.se/", {"follow", "links"}),
-    ("pet_sounds", "https://petsoundsbar.se/", {"follow", "links"}),
-    ("soldaten_svejk", "https://www.soldatensvejk.se/", {"follow", "links"}),
-    ("queens_head", "https://thequeenshead.se/", {"follow", "links"}),
-    ("bishops_arms", "https://www.bishopsarms.com/", {"follow", "links"}),
+    # Cycle 2: drill into the workable cycle-1 candidates + retry failures.
+    ("lionbar_meny", "https://lionbar.se/meny/", {"pricelist", "fulltext"}),
+    ("intlbar_menu", "https://internationalbar.se/menu/", {"pricelist", "fulltext", "links"}),
+    ("bishops_gamla_stan", "https://www.bishopsarms.com/vara-pubar/stockholm/gamla-stan/", {"olmeny", "links"}),
+    ("bishops_vasagatan", "https://www.bishopsarms.com/vara-pubar/stockholm/vasagatan/", {"olmeny"}),
+    ("petsounds_bar", "https://petsounds.se/bar", {"dl"}),
+    ("carmen_http", "http://carmen.nu/", {"follow", "links"}),
+    ("carmen_insecure", "https://carmen.nu/", {"insecure", "follow", "links"}),
+    ("oliver_twist_bare", "https://oliver-twist.se/", {"follow", "links"}),
+    ("oliver_twist_http", "http://www.oliver-twist.se/", {"follow"}),
+    ("svejk_bare", "https://soldatensvejk.se/", {"follow", "links"}),
+    ("svejk_insecure", "https://www.soldatensvejk.se/", {"insecure", "follow"}),
+    ("queens_www", "https://www.thequeenshead.se/", {"follow"}),
+    ("tennstopet", "https://www.tennstopet.se/", {"follow", "links"}),
 ]
 
 
-def get(url: str):
+def get(url: str, insecure: bool = False):
     try:
-        return requests.get(url, headers=HEADERS, timeout=TIMEOUT, allow_redirects=True), None
+        return (
+            requests.get(
+                url,
+                headers=HEADERS,
+                timeout=TIMEOUT,
+                allow_redirects=True,
+                verify=not insecure,
+            ),
+            None,
+        )
     except Exception as exc:  # noqa: BLE001
         return None, f"{type(exc).__name__}: {exc}"
 
@@ -173,6 +190,57 @@ def dump_links(soup: BeautifulSoup, base: str) -> None:
             break
 
 
+def dump_pricelist(soup: BeautifulSoup) -> None:
+    print("  [elementor price-list items]")
+    items = soup.select("li.elementor-price-list-item")
+    for li in items[:70]:
+        txt = " ".join(li.get_text(" ", strip=True).split())
+        price = li.select_one(".elementor-price-list-price")
+        price_txt = price.get_text(strip=True) if price else None
+        print(f"    ITEM: {txt[:130]!r} price-span={price_txt!r}")
+    if not items:
+        print("    (no price-list items)")
+
+
+def dump_dl(soup: BeautifulSoup) -> None:
+    print("  [dl beer rows]")
+    for h in soup.find_all("h3"):
+        head = h.get_text(" ", strip=True)
+        if head.upper() not in ("FATÖL", "ÖL", "ALKOHOLFRITT"):
+            continue
+        print(f"    SECTION: {head!r} parent=<{node_desc(h.parent)}>")
+        block = h.parent
+        for row in block.select("dl div"):
+            dt, dd = row.find("dt"), row.find("dd")
+            dt_txt = " ".join(dt.get_text(" ", strip=True).split()) if dt else None
+            dd_txt = " ".join(dd.get_text(" ", strip=True).split()) if dd else None
+            print(f"      dt={dt_txt!r} dd={dd_txt!r}")
+
+
+def dump_fulltext(soup: BeautifulSoup) -> None:
+    text = " ".join(soup.get_text(" ", strip=True).split())
+    print(f"  [full visible text, {len(text)} chars]")
+    for i in range(0, min(len(text), 7000), 120):
+        print(f"    {text[i:i + 120]}")
+
+
+def follow_meny_links(soup: BeautifulSoup, base: str, label: str) -> None:
+    seen, links = set(), []
+    for a in soup.find_all("a", href=True):
+        text = a.get_text(" ", strip=True)
+        if re.search(r"meny|menu", text, re.I):
+            full = urljoin(base, a["href"]).split("#")[0]
+            if full not in seen:
+                seen.add(full)
+                links.append((full, text[:60]))
+    print(f"  [meny-text links: {len(links)}]")
+    for full, text in links[:8]:
+        print(f"    link: {full}  text={text!r}")
+    for i, (full, _) in enumerate(links[:3]):
+        if full.rstrip("/") != base.rstrip("/"):
+            analyse(f"{label}_meny{i}", full, set(), depth=1)
+
+
 def dump_pdf(content: bytes) -> None:
     import io
 
@@ -194,7 +262,7 @@ def dump_pdf(content: bytes) -> None:
 def analyse(label: str, url: str, opts: set[str], depth: int = 0) -> None:
     print(f"\n===== {label} =====")
     print(f"  url={url}")
-    resp, err = get(url)
+    resp, err = get(url, insecure="insecure" in opts)
     if err or resp is None:
         print(f"  FETCH FAILED: {err}")
         return
@@ -222,8 +290,16 @@ def analyse(label: str, url: str, opts: set[str], depth: int = 0) -> None:
     dump_beer_lines(soup)
     dump_sections(soup)
     dump_addresses(soup)
+    if "pricelist" in opts:
+        dump_pricelist(soup)
+    if "dl" in opts:
+        dump_dl(soup)
+    if "fulltext" in opts:
+        dump_fulltext(soup)
     if "links" in opts:
         dump_links(soup, str(resp.url))
+    if "olmeny" in opts:
+        follow_meny_links(soup, str(resp.url), label)
 
     if "follow" in opts and depth == 0:
         seen, links = set(), []
