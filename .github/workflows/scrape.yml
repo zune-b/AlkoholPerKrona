@@ -11,15 +11,19 @@ on:
       - "scraper/**"
       - ".github/workflows/scrape.yml"
 
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -28,6 +32,20 @@ jobs:
       - run: pip install -r scraper/requirements.txt
 
       - run: python -m scraper.main
+
+      - name: Validate scraped data
+        run: |
+          set +e
+          output=$(python -m scraper.validate 2>&1)
+          status=$?
+          echo "$output"
+          {
+            echo "### Scrape data health"
+            echo '```'
+            echo "$output"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $status
 
       - name: Commit updated data
         run: |
