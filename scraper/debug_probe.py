@@ -27,34 +27,36 @@ HEADERS = {
     "Accept-Language": "sv-SE,sv;q=0.9,en;q=0.8",
 }
 TIMEOUT = 15
-MENU_LINK_RE = re.compile(r"meny|menu|dryck|drink|bar(?:en)?\b", re.I)
+MENU_LINK_RE = re.compile(r"meny|menu|dryck|drink|bar(?:en)?\b|vinlista", re.I)
 BEER_RE = re.compile(
-    r"öl|beer|fatöl|ipa|lager|pils|stout|witbier|weiss|ale\b"
-    r"|menabrea|mariestad|carlsberg|heineken|norrlands|eriksberg"
-    r"|staropramen|spendrup|melleruds|sleepy bulldog|omnipollo|brooklyn",
+    r"öl|beer|fatöl|ipa|lager|pils|stout|porter|witbier|weiss|ale\b"
+    r"|menabrea|mariestad|carlsberg|heineken|norrlands|eriksberg|staropramen"
+    r"|kronenbourg|spendrup|melleruds|sleepy bulldog|omnipollo|brooklyn|guinness",
     re.I,
 )
 PRICE_RE = re.compile(r"\b(\d{2,3})\s*(?::-|kr|sek|,-)?\b")
+SECTION_HEAD_RE = re.compile(r"dryck|öl|bar(?:en)?\b|drinks|beverage", re.I)
 HTML_DIR = Path("html")
 
-# (label, url, follow_menu_links)
+# (label, url, options) — options: follow (probe menu links), links (dump all
+# links), sections (dump text after dryck/öl/bar headings), svbr (dump all
+# Svenska Brasserier menu items with their section titles).
 PROBES = [
-    ("sturehof", "https://sturehof.com/meny/", False),
-    ("teatergrillen", "https://teatergrillen.se/meny/", False),
-    ("riche", "https://riche-dev.wetail.dev/meny", False),
-    ("godot_meny", "https://godot.se/pages/meny", False),
-    ("godot_baren", "https://godot.se/pages/baren", False),
-    ("lisa_elmqvist", "https://www.lisaelmqvist.se/restaurang/restaurangmeny", False),
-    ("tures", "https://www.tures.se/", False),
-    ("bobonne", "https://bobonne.se/", True),
-    # Replacement candidates (3 of these will replace bestick/knut/bagatelle)
-    ("cand_tavernabrillo", "https://tavernabrillo.se/", True),
-    ("cand_hillenberg", "https://www.hillenberg.se/", True),
-    ("cand_nybrogatan38", "https://nybrogatan38.com/", True),
-    ("cand_grodan", "https://grodan.se/", True),
-    ("cand_east", "https://east.se/", True),
-    ("cand_speceriet", "https://speceriet.se/", True),
-    ("cand_ekstedt", "https://www.ekstedt.nu/", True),
+    # Existing restaurants that still need DOM evidence
+    ("teatergrillen", "https://teatergrillen.se/meny/", {"svbr"}),
+    ("godot_root", "https://godot.se/", {"follow", "links"}),
+    ("bobonne_menyer", "https://bobonne.se/menyer/", {"sections", "links"}),
+    ("lisa_elmqvist", "https://www.lisaelmqvist.se/restaurang/restaurangmeny", {"links"}),
+    # Replacement candidates, round 2
+    ("hillenberg_baren", "https://hillenberg.se/baren/", {"sections", "links"}),
+    ("nybrogatan38_menyer", "https://nybrogatan38.com/menyer", {"follow", "links", "sections"}),
+    ("grodan", "https://www.grodan.se/", {"links"}),
+    ("tavernabrillo", "https://www.tavernabrillo.se/meny/", {"svbr", "follow"}),
+    ("east", "https://www.east.se/", {"follow"}),
+    ("astoria", "https://brasserieastoria.com/", {"follow"}),
+    ("paco", "https://pa-co.se/", {"follow"}),
+    ("hantverket", "https://restauranghantverket.se/", {"follow"}),
+    ("eriks_bakficka", "https://eriks.se/", {"follow"}),
 ]
 
 
@@ -72,7 +74,7 @@ def render_check(html: str) -> str:
     for marker, name in [
         ("__NEXT_DATA__", "Next.js"), ("wp-content", "WordPress"),
         ("squarespace", "Squarespace"), ("wixstatic", "Wix"),
-        ("cdn.shopify", "Shopify"), ("svenska brasserier", "SvBr-theme"),
+        ("cdn.shopify", "Shopify"), ("svbr-menu-module", "SvBr-theme"),
     ]:
         if marker.lower() in html.lower():
             notes.append(name)
@@ -133,7 +135,42 @@ def dump_beer_lines(soup: BeautifulSoup) -> None:
         print("    (no beer-ish lines found)")
 
 
-def analyse(label: str, url: str, follow_links: bool) -> None:
+def dump_svbr_items(soup: BeautifulSoup) -> None:
+    print("  [svbr items]")
+    for field in soup.select("li.svbr-menu-module-tabs__field"):
+        title = field.find("h3", class_="menu__item--title")
+        print(f"    SECTION: {title.get_text(' ', strip=True) if title else '(none)'}")
+        for item in field.select("span.menu__item--second-title-and-price"):
+            print(f"      ITEM: {' '.join(item.get_text(' ', strip=True).split())[:110]}")
+
+
+def dump_sections(soup: BeautifulSoup) -> None:
+    print("  [sections after dryck/öl/bar headings]")
+    for h in soup.find_all(re.compile("^h[1-6]$")):
+        head = h.get_text(" ", strip=True)
+        if not head or not SECTION_HEAD_RE.search(head):
+            continue
+        scope = h.parent.parent if h.parent and h.parent.parent else h.parent
+        text = " ".join(scope.get_text(" ", strip=True).split())[:700]
+        print(f"    HEAD {node_desc(h)}: {head[:60]!r}")
+        print(f"      scope <{node_desc(scope)}>: {text}")
+
+
+def dump_links(soup: BeautifulSoup, base: str) -> None:
+    print("  [all links]")
+    seen = set()
+    for a in soup.find_all("a", href=True):
+        full = urljoin(base, a["href"])
+        if full in seen:
+            continue
+        seen.add(full)
+        print(f"    {full}  text={a.get_text(' ', strip=True)[:50]!r}")
+        if len(seen) >= 40:
+            print("    ... (truncated at 40)")
+            break
+
+
+def analyse(label: str, url: str, opts: set[str]) -> None:
     print(f"\n===== {label} =====")
     print(f"  url={url}")
     resp, err = get(url)
@@ -159,8 +196,14 @@ def analyse(label: str, url: str, follow_links: bool) -> None:
         print(line)
     print("  [beer-ish lines]")
     dump_beer_lines(soup)
+    if "svbr" in opts:
+        dump_svbr_items(soup)
+    if "sections" in opts:
+        dump_sections(soup)
+    if "links" in opts:
+        dump_links(soup, str(resp.url))
 
-    if follow_links:
+    if "follow" in opts:
         seen, links = set(), []
         for a in soup.find_all("a", href=True):
             text = a.get_text(" ", strip=True)[:60]
@@ -173,13 +216,14 @@ def analyse(label: str, url: str, follow_links: bool) -> None:
         for full, text in links[:10]:
             print(f"    link: {full}  text={text!r}")
         for i, (full, _) in enumerate(links[:3]):
-            analyse(f"{label}_link{i}", full, False)
+            if full.rstrip("/") != str(resp.url).rstrip("/"):
+                analyse(f"{label}_link{i}", full, {"sections"})
 
 
 def main() -> None:
-    for label, url, follow in PROBES:
+    for label, url, opts in PROBES:
         try:
-            analyse(label, url, follow)
+            analyse(label, url, opts)
         except Exception:  # noqa: BLE001
             print(f"  PROBE CRASHED for {label}:")
             traceback.print_exc(file=sys.stdout)

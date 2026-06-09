@@ -6,7 +6,7 @@ META = {
     "address": "Östermalms Saluhall, Nybrogatan 31, 114 39 Stockholm",
     "lat": 59.3361,
     "lon": 18.0795,
-    "source_url": "https://www.lisaelmqvist.se/meny",
+    "source_url": "https://www.lisaelmqvist.se/restaurang/restaurangmeny",
 }
 
 
