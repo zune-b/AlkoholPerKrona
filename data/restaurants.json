@@ -14,7 +14,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "HTTPSConnectionPool(host='www.bagatelle.se', port=443): Max retries exceeded with url: /meny (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.bagatelle.se', port=443) at 0x7fa3bcea0c50>, 'Connection to www.bagatelle.se timed out. (connect timeout=15)'))"
   },
   {
     "id": "bestick",
@@ -31,7 +31,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "HTTPSConnectionPool(host='www.bestick.nu', port=443): Max retries exceeded with url: /meny (Caused by NameResolutionError(\"HTTPSConnection(host='www.bestick.nu', port=443): Failed to resolve 'www.bestick.nu' ([Errno -3] Temporary failure in name resolution)\"))"
   },
   {
     "id": "bobonne",
@@ -48,7 +48,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "HTTPSConnectionPool(host='www.brasseriebobonne.se', port=443): Max retries exceeded with url: /meny (Caused by NameResolutionError(\"HTTPSConnection(host='www.brasseriebobonne.se', port=443): Failed to resolve 'www.brasseriebobonne.se' ([Errno -2] Name or service not known)\"))"
   },
   {
     "id": "godot",
@@ -65,7 +65,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "404 Client Error: Not Found for url: https://godot.se/meny/"
   },
   {
     "id": "knut",
@@ -82,7 +82,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "HTTPSConnectionPool(host='www.knutostermalm.se', port=443): Max retries exceeded with url: /meny (Caused by NameResolutionError(\"HTTPSConnection(host='www.knutostermalm.se', port=443): Failed to resolve 'www.knutostermalm.se' ([Errno -2] Name or service not known)\"))"
   },
   {
     "id": "lisa_elmqvist",
@@ -99,7 +99,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "404 Client Error: Not Found for url: https://www.lisaelmqvist.se/meny"
   },
   {
     "id": "riche",
@@ -116,7 +116,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "HTTPSConnectionPool(host='www.riche.se', port=443): Max retries exceeded with url: /meny/ (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.riche.se'. (_ssl.c:1010)\")))"
   },
   {
     "id": "sturehof",
@@ -133,7 +133,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "404 Client Error: Not Found for url: https://sturehof.com/menyer-och-drycker/"
   },
   {
     "id": "teatergrillen",
@@ -150,7 +150,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "no beer found"
   },
   {
     "id": "tures",
@@ -167,6 +167,6 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "placeholder seed; awaiting first real scrape"
+    "stale_reason": "404 Client Error: Not Found for url: https://www.tures.se/meny"
   }
 ]
