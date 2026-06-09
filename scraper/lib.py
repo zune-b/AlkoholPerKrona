@@ -164,9 +164,9 @@ _NON_ALC_RE = re.compile(
     r"alkoholfri|non.?alcoholic|zero|0\s*[.,]\s*[0-5]\s*%", re.IGNORECASE
 )
 # "20cl 57:-" / "40cl 97" volume+price pairs (Svenska Brasserier format).
-_VOL_PRICE_PAIR_RE = re.compile(r"(\d{1,3})\s*cl\s+(\d{2,3})(?:\s*:-)?\b")
+_VOL_PRICE_PAIR_RE = re.compile(r"(\d{1,3})\s*cl\s+(\d{2,3})(?:\s*:-)?\b", re.IGNORECASE)
 # Bare price: 2-3 digits not part of a volume, percentage or decimal.
-_BARE_PRICE_RE = re.compile(r"(?<![\d.,])\b(\d{2,3})\b(?!\s*(?:cl|%|[.,]\d))")
+_BARE_PRICE_RE = re.compile(r"(?<![\d.,])\b(\d{2,3})\b(?!\s*(?:cl|%|[.,]\d))", re.IGNORECASE)
 
 PRICE_MIN_SEK = 30
 PRICE_MAX_SEK = 300

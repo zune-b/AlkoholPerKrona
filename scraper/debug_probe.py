@@ -42,19 +42,22 @@ HTML_DIR = Path("html")
 # links), sections (dump text after dryck/öl/bar headings), svbr (dump all
 # Svenska Brasserier menu items with their section titles), fulltext (dump
 # the whole visible text). PDF responses get their text lines dumped.
+# Current state: the source_url (or drinks PDF) of each tracked restaurant.
 PROBES = [
-    # Existing restaurants that still need evidence
-    ("bobonne_menyer", "https://bobonne.se/menyer/", {"fulltext"}),
+    ("sturehof", "https://sturehof.com/meny/", {"svbr"}),
+    ("riche", "https://riche-dev.wetail.dev/meny/", {"svbr"}),
+    ("teatergrillen", "https://teatergrillen.se/meny/", {"svbr"}),
+    ("tures", "https://www.tures.se/", set()),
+    ("godot", "https://godot.se/pages/meny", set()),  # no beer published
+    ("bobonne", "https://bobonne.se/menyer/", {"sections"}),  # no beer published
+    ("lisa_elmqvist", "https://www.lisaelmqvist.se/restaurang/restaurangmeny", {"links"}),
     ("lisa_pdf", "https://www.lisaelmqvist.se/files/restaurang/matochvinmeny.pdf", set()),
-    # PDF drink lists for the two PDF-based replacements
+    ("hillenberg", "https://hillenberg.se/baren/", {"links"}),
     ("hillenberg_pdf", "https://hillenberg.se/wp-content/uploads/2026/05/drinklista-var-2026.pdf", set()),
+    ("nybrogatan38", "https://nybrogatan38.com/menyer", {"links"}),
     ("n38_pdf", "https://static.thatsup.website/329/39579/Drinklista-maj3-26-Charliés.pdf?v=1779401588", set()),
-    # Third-replacement candidates, round 3
-    ("grodan_grevture", "https://www.grodan.se/grevture", {"follow", "links", "sections"}),
-    ("tavernabrillo", "https://taverna-brillo.se/", {"follow"}),
-    ("strandvagen1", "https://strandvagen1.se/", {"follow"}),
-    ("missvoon", "https://missvoon.se/", {"follow"}),
-    ("eriks_bakficka", "https://eriks.se/", {"follow"}),
+    ("grodan", "https://www.grodan.se/grevture", {"links"}),
+    ("grodan_dryck_pdf", "https://www.grodan.se/media/3986/kvallsmeny-dryck_2026_gt__v-22.pdf", set()),
 ]
 
 
@@ -175,12 +178,16 @@ def dump_pdf(content: bytes) -> None:
 
     text = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(content)).pages)
     lines = [" ".join(l.split()) for l in text.splitlines()]
-    lines = [l for l in lines if l and (any(c.isdigit() for c in l) or BEER_RE.search(l))]
-    print(f"  [pdf text lines with digits/beer: {len(lines)}]")
-    for line in lines[:100]:
+    beer = [l for l in lines if l and BEER_RE.search(l)]
+    digits = [l for l in lines if l and l not in beer and any(c.isdigit() for c in l)]
+    print(f"  [pdf beer lines: {len(beer)}]")
+    for line in beer[:60]:
         print(f"    {line[:110]}")
-    if len(lines) > 100:
-        print("    ... (truncated at 100)")
+    print(f"  [pdf other lines with digits: {len(digits)}]")
+    for line in digits[:60]:
+        print(f"    {line[:110]}")
+    if len(digits) > 60:
+        print("    ... (truncated at 60)")
 
 
 def dump_fulltext(soup: BeautifulSoup) -> None:
