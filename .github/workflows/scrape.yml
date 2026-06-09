@@ -5,6 +5,11 @@ on:
     # 04:17 UTC daily — off-peak, avoids the top of the hour
     - cron: "17 4 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scraper/**"
+      - ".github/workflows/scrape.yml"
 
 jobs:
   scrape:
