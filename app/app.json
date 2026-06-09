@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "alkoholperkrona",
+    "slug": "alkoholperkrona",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.alkoholperkrona.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Used to center the map on your location."
+      }
+    },
+    "extra": {
+      "dataUrl": "https://raw.githubusercontent.com/zune-b/testla-/main/data/restaurants.json"
+    },
+    "plugins": []
+  }
+}
