@@ -161,7 +161,8 @@ _NOT_BEER_RE = re.compile(
     re.IGNORECASE,
 )
 _NON_ALC_RE = re.compile(
-    r"alkoholfri|non.?alcoholic|zero|0\s*[.,]\s*[0-5]\s*%", re.IGNORECASE
+    # "easy rider" is Sleepy Bulldog's 0,4% near-beer; menus often omit the %.
+    r"alkoholfri|non.?alc\w*|zero|easy rider|0\s*[.,]\s*[0-5]\s*%", re.IGNORECASE
 )
 # "20cl 57:-" / "40cl 97" volume+price pairs (Svenska Brasserier format).
 _VOL_PRICE_PAIR_RE = re.compile(r"(\d{1,3})\s*cl\s+(\d{2,3})(?:\s*:-)?\b", re.IGNORECASE)
@@ -237,11 +238,22 @@ def find_cheapest_beer_svbr(html: str) -> Beer | None:
     return _cheapest(candidates)
 
 
+# pypdf ligature/glyph artifacts like "/parenleft.case" or "/hyphen.case"
+_PDF_GLYPH_RE = re.compile(r"/[a-z]+\.case")
+_LITER_RE = re.compile(r"\b0[.,](\d{1,2})\s*l\b", re.IGNORECASE)
+
+
+def _liter_to_cl(m: re.Match) -> str:
+    digits = m.group(1)
+    return f"{int(digits) * 10 if len(digits) == 1 else int(digits)}cl"
+
+
 def find_cheapest_beer_in_text(text: str) -> Beer | None:
     """Scan plain-text lines (e.g. extracted from a PDF menu) for beers."""
     candidates: list[tuple[Beer, bool]] = []
     for raw in text.splitlines():
-        line = _strip(raw)
+        line = _strip(_PDF_GLYPH_RE.sub(" ", raw))
+        line = _LITER_RE.sub(_liter_to_cl, line)  # "0,33L" -> "33cl"
         if not line or len(line) > 160 or not is_beer_line(line):
             continue
         parsed = parse_price_and_volume(line)
@@ -250,7 +262,9 @@ def find_cheapest_beer_in_text(text: str) -> Beer | None:
         price, volume = parsed
         name = _VOL_PRICE_PAIR_RE.sub(" ", line)
         name = _BARE_PRICE_RE.sub(" ", name)
-        name = _strip(_VOLUME_RE.sub(" ", name)).strip(",.-–/ ")
+        name = _VOLUME_RE.sub(" ", name)
+        name = re.sub(r"\b(kr|sek)\b\.?", " ", name, flags=re.IGNORECASE)
+        name = _strip(name).strip(",.-–/ ")
         beer = Beer(name=(name or line)[:80], volume_cl=volume, price_sek=price)
         candidates.append((beer, bool(_NON_ALC_RE.search(line))))
     return _cheapest(candidates)
