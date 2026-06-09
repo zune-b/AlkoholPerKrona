@@ -18,7 +18,7 @@ export function rankValue(r: Restaurant): number {
 
 export function sortByValue(restaurants: Restaurant[]): Restaurant[] {
   return [...restaurants].sort((a, b) => {
-    if (a.stale !== b.stale) return a.stale ? 1 : -1;
+    if (!!a.stale !== !!b.stale) return a.stale ? 1 : -1;
     return rankValue(a) - rankValue(b);
   });
 }

@@ -74,6 +74,7 @@ export function MapScreen() {
             coordinate={{ latitude: r.lat, longitude: r.lon }}
             tracksViewChanges={false}
             anchor={{ x: 0.5, y: 1 }}
+            centerOffset={{ x: 0, y: -17 }}
           >
             <PriceMarker r={r} isBest={r.id === bestId} />
             <Callout tooltip>

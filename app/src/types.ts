@@ -16,4 +16,5 @@ export type Restaurant = {
   last_updated: string;
   stale?: boolean;
   stale_reason?: string;
+  discovered?: boolean;
 };
