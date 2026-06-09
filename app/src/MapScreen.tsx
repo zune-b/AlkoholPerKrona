@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import MapView, { Callout, Marker, PROVIDER_DEFAULT } from "react-native-maps";
 import { loadRestaurants } from "./data";
 import { PinCallout } from "./PinCallout";
+import { PriceMarker } from "./PriceMarker";
+import { RankList, sortByValue } from "./RankList";
 import type { Restaurant } from "./types";
 
 const OSTERMALM = {
@@ -14,10 +16,18 @@ const OSTERMALM = {
 
 export function MapScreen() {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null);
+  const [listExpanded, setListExpanded] = useState(false);
+  const mapRef = useRef<MapView>(null);
 
   useEffect(() => {
     loadRestaurants().then(setRestaurants);
   }, []);
+
+  const bestId = useMemo(() => {
+    if (!restaurants) return null;
+    const best = sortByValue(restaurants)[0];
+    return best && !best.stale && best.cheapest_beer ? best.id : null;
+  }, [restaurants]);
 
   if (!restaurants) {
     return (
@@ -27,9 +37,18 @@ export function MapScreen() {
     );
   }
 
+  const flyTo = (r: Restaurant) => {
+    setListExpanded(false);
+    mapRef.current?.animateToRegion(
+      { latitude: r.lat, longitude: r.lon, latitudeDelta: 0.005, longitudeDelta: 0.005 },
+      400,
+    );
+  };
+
   return (
     <View style={styles.container}>
       <MapView
+        ref={mapRef}
         style={styles.map}
         provider={PROVIDER_DEFAULT}
         initialRegion={OSTERMALM}
@@ -40,8 +59,10 @@ export function MapScreen() {
           <Marker
             key={r.id}
             coordinate={{ latitude: r.lat, longitude: r.lon }}
-            pinColor={r.stale ? "gray" : "tomato"}
+            tracksViewChanges={false}
+            anchor={{ x: 0.5, y: 1 }}
           >
+            <PriceMarker r={r} isBest={r.id === bestId} />
             <Callout tooltip>
               <View style={styles.callout}>
                 <PinCallout r={r} />
@@ -53,6 +74,12 @@ export function MapScreen() {
       <View style={styles.banner} pointerEvents="none">
         <Text style={styles.bannerText}>alkoholperkrona · Östermalm</Text>
       </View>
+      <RankList
+        restaurants={restaurants}
+        expanded={listExpanded}
+        onToggle={() => setListExpanded((v) => !v)}
+        onPick={flyTo}
+      />
     </View>
   );
 }
