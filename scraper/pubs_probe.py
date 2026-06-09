@@ -55,37 +55,46 @@ HTML_DIR = Path("html")
 #   fulltext  dump the whole visible text
 #   olmeny    follow links whose text contains "meny" (Bishops Arms)
 PROBES = [
-    # Cycle 2: drill into the workable cycle-1 candidates + retry failures.
-    ("lionbar_meny", "https://lionbar.se/meny/", {"pricelist", "fulltext"}),
+    # Cycle 3: retry International Bar menu (transient Errno 101 in cycle 2),
+    # corrected domains for Oliver Twist / Svejk, and fresh budget classics.
     ("intlbar_menu", "https://internationalbar.se/menu/", {"pricelist", "fulltext", "links"}),
-    ("bishops_gamla_stan", "https://www.bishopsarms.com/vara-pubar/stockholm/gamla-stan/", {"olmeny", "links"}),
-    ("bishops_vasagatan", "https://www.bishopsarms.com/vara-pubar/stockholm/vasagatan/", {"olmeny"}),
-    ("petsounds_bar", "https://petsounds.se/bar", {"dl"}),
-    ("carmen_http", "http://carmen.nu/", {"follow", "links"}),
-    ("carmen_insecure", "https://carmen.nu/", {"insecure", "follow", "links"}),
-    ("oliver_twist_bare", "https://oliver-twist.se/", {"follow", "links"}),
-    ("oliver_twist_http", "http://www.oliver-twist.se/", {"follow"}),
-    ("svejk_bare", "https://soldatensvejk.se/", {"follow", "links"}),
-    ("svejk_insecure", "https://www.soldatensvejk.se/", {"insecure", "follow"}),
-    ("queens_www", "https://www.thequeenshead.se/", {"follow"}),
-    ("tennstopet", "https://www.tennstopet.se/", {"follow", "links"}),
+    ("olivertwist", "https://olivertwist.se/", {"follow", "links"}),
+    ("svejk_se", "https://www.svejk.se/", {"follow", "links"}),
+    ("pelikan", "https://www.pelikan.se/", {"follow", "links"}),
+    ("zum_franziskaner", "https://www.zumfranziskaner.se/", {"follow", "links"}),
+    ("tudor_arms", "https://www.tudorarms.com/", {"follow", "links"}),
+    ("engelen", "https://www.engelen.se/", {"follow", "links"}),
+    ("stampen", "https://stampen.se/", {"follow", "links"}),
+    ("wirstroms", "https://www.wirstromspub.se/", {"follow", "links"}),
+    ("liffey", "https://www.theliffey.se/", {"follow", "links"}),
+    ("halfway_inn", "https://halfwayinn.se/", {"follow", "links"}),
+    ("medusa", "https://www.medusabar.se/", {"follow", "links"}),
+    ("tennstopet_meny", "https://tennstopet.se/var-meny", {"links"}),
 ]
 
 
 def get(url: str, insecure: bool = False):
-    try:
-        return (
-            requests.get(
-                url,
-                headers=HEADERS,
-                timeout=TIMEOUT,
-                allow_redirects=True,
-                verify=not insecure,
-            ),
-            None,
-        )
-    except Exception as exc:  # noqa: BLE001
-        return None, f"{type(exc).__name__}: {exc}"
+    err = None
+    for attempt in range(2):
+        try:
+            return (
+                requests.get(
+                    url,
+                    headers=HEADERS,
+                    timeout=TIMEOUT,
+                    allow_redirects=True,
+                    verify=not insecure,
+                ),
+                None,
+            )
+        except Exception as exc:  # noqa: BLE001
+            err = f"{type(exc).__name__}: {exc}"
+            if isinstance(exc, requests.exceptions.SSLError):
+                break  # cert problems will not fix themselves
+            import time
+
+            time.sleep(2 * (attempt + 1))
+    return None, err
 
 
 def render_check(html: str) -> str:
