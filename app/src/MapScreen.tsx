@@ -17,11 +17,23 @@ const OSTERMALM = {
 export function MapScreen() {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null);
   const [listExpanded, setListExpanded] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
   const mapRef = useRef<MapView>(null);
 
   useEffect(() => {
     loadRestaurants().then(setRestaurants);
   }, []);
+
+  useEffect(() => {
+    if (!mapReady || !restaurants?.length) return;
+    mapRef.current?.fitToCoordinates(
+      restaurants.map((r) => ({ latitude: r.lat, longitude: r.lon })),
+      {
+        edgePadding: { top: 100, right: 50, bottom: 140, left: 50 },
+        animated: false,
+      },
+    );
+  }, [mapReady, restaurants]);
 
   const bestId = useMemo(() => {
     if (!restaurants) return null;
@@ -52,6 +64,7 @@ export function MapScreen() {
         style={styles.map}
         provider={PROVIDER_DEFAULT}
         initialRegion={OSTERMALM}
+        onMapReady={() => setMapReady(true)}
         showsUserLocation
         showsMyLocationButton
       >
@@ -72,7 +85,7 @@ export function MapScreen() {
         ))}
       </MapView>
       <View style={styles.banner} pointerEvents="none">
-        <Text style={styles.bannerText}>alkoholperkrona · Östermalm</Text>
+        <Text style={styles.bannerText}>alkoholperkrona · Stockholm</Text>
       </View>
       <RankList
         restaurants={restaurants}
