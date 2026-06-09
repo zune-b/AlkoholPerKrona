@@ -55,21 +55,15 @@ HTML_DIR = Path("html")
 #   fulltext  dump the whole visible text
 #   olmeny    follow links whose text contains "meny" (Bishops Arms)
 PROBES = [
-    # Cycle 3: retry International Bar menu (transient Errno 101 in cycle 2),
-    # corrected domains for Oliver Twist / Svejk, and fresh budget classics.
-    ("intlbar_menu", "https://internationalbar.se/menu/", {"pricelist", "fulltext", "links"}),
-    ("olivertwist", "https://olivertwist.se/", {"follow", "links"}),
-    ("svejk_se", "https://www.svejk.se/", {"follow", "links"}),
-    ("pelikan", "https://www.pelikan.se/", {"follow", "links"}),
-    ("zum_franziskaner", "https://www.zumfranziskaner.se/", {"follow", "links"}),
-    ("tudor_arms", "https://www.tudorarms.com/", {"follow", "links"}),
-    ("engelen", "https://www.engelen.se/", {"follow", "links"}),
-    ("stampen", "https://stampen.se/", {"follow", "links"}),
-    ("wirstroms", "https://www.wirstromspub.se/", {"follow", "links"}),
-    ("liffey", "https://www.theliffey.se/", {"follow", "links"}),
-    ("halfway_inn", "https://halfwayinn.se/", {"follow", "links"}),
-    ("medusa", "https://www.medusabar.se/", {"follow", "links"}),
-    ("tennstopet_meny", "https://tennstopet.se/var-meny", {"links"}),
+    # Cycle 4: DOM evidence backing the final modules (International Bar h4
+    # price lines, Soldaten Svejk table rows) + a few extra candidates for
+    # future expansion.
+    ("intlbar_menu_h4", "https://internationalbar.se/menu/", {"h4"}),
+    ("svejk_dryck_rows", "https://svejk.se/dryck/", {"tablerows"}),
+    ("katarina_olkafe", "https://katarinaolkafe.se/", {"follow", "links"}),
+    ("dubliner", "https://thedubliner.se/", {"follow", "links"}),
+    ("oconnells", "https://oconnells.se/", {"follow", "links"}),
+    ("maninthemoon", "https://www.maninthemoon.se/", {"follow", "links"}),
 ]
 
 
@@ -250,6 +244,25 @@ def follow_meny_links(soup: BeautifulSoup, base: str, label: str) -> None:
             analyse(f"{label}_meny{i}", full, set(), depth=1)
 
 
+def dump_h4(soup: BeautifulSoup) -> None:
+    print("  [all h4 elements with ancestor chains]")
+    for h4 in soup.find_all("h4")[:80]:
+        text = " ".join(h4.get_text(" ", strip=True).split())
+        print(f"    H4: {text[:90]!r}")
+        print(f"      chain: {ancestor_chain(h4, depth=5)}")
+
+
+def dump_tablerows(soup: BeautifulSoup) -> None:
+    print("  [table rows]")
+    for ti, table in enumerate(soup.find_all("table")[:4]):
+        print(f"    TABLE {ti}")
+        for tr in table.find_all("tr")[:60]:
+            cells = [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
+            heading = tr.find(re.compile(r"^h[1-6]$"))
+            mark = " [has-heading]" if heading is not None else ""
+            print(f"      TR{mark}: {cells!r}"[:200])
+
+
 def dump_pdf(content: bytes) -> None:
     import io
 
@@ -303,6 +316,10 @@ def analyse(label: str, url: str, opts: set[str], depth: int = 0) -> None:
         dump_pricelist(soup)
     if "dl" in opts:
         dump_dl(soup)
+    if "h4" in opts:
+        dump_h4(soup)
+    if "tablerows" in opts:
+        dump_tablerows(soup)
     if "fulltext" in opts:
         dump_fulltext(soup)
     if "links" in opts:
