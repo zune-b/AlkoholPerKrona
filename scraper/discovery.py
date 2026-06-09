@@ -18,6 +18,7 @@ data/candidates.json; the next nightly run does the rest.
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,6 +30,29 @@ CANDIDATES_PATH = DATA_DIR / "candidates.json"
 OUTPUT_PATH = DATA_DIR / "restaurants.json"
 
 
+def _previously_discovered() -> dict[str, dict]:
+    """Discovered entries from the last committed data file.
+
+    scraper.main rewrites restaurants.json from modules only, wiping any
+    discovered entries before this pass runs — so a transient scrape
+    failure would make a discovered venue vanish from the app. The last
+    commit (HEAD predates this run's data commit) is the durable record.
+    """
+    try:
+        raw = subprocess.run(
+            ["git", "show", "HEAD:data/restaurants.json"],
+            capture_output=True,
+            text=True,
+            timeout=15,
+            cwd=DATA_DIR.parent,
+            check=True,
+        ).stdout
+        return {e["id"]: e for e in json.loads(raw) if e.get("discovered")}
+    except Exception as exc:  # noqa: BLE001 — discovery must never break the run
+        print(f"could not read previous data from git: {exc}", file=sys.stderr)
+        return {}
+
+
 def main() -> int:
     if not CANDIDATES_PATH.exists():
         print("no candidates.json — nothing to discover", file=sys.stderr)
@@ -37,6 +61,10 @@ def main() -> int:
     candidates = json.loads(CANDIDATES_PATH.read_text())
     entries = json.loads(OUTPUT_PATH.read_text()) if OUTPUT_PATH.exists() else []
     by_id = {e["id"]: e for e in entries}
+    # Re-seed discovered venues that scraper.main just wiped from the file,
+    # so a failed re-scrape keeps them (stale) instead of dropping the pin.
+    for cid, entry in _previously_discovered().items():
+        by_id.setdefault(cid, entry)
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
     added = updated = kept_stale = skipped = 0
