@@ -33,6 +33,9 @@ jobs:
 
       - run: python -m scraper.main
 
+      - name: Discover new venues from candidates backlog
+        run: python -m scraper.discovery
+
       - name: Validate scraped data
         run: |
           set +e
