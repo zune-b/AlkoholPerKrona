@@ -162,7 +162,8 @@ _NOT_BEER_RE = re.compile(
 )
 _NON_ALC_RE = re.compile(
     # "easy rider" is Sleepy Bulldog's 0,4% near-beer; menus often omit the %.
-    r"alkoholfri|non.?alc\w*|zero|easy rider|0\s*[.,]\s*[0-5]\s*%", re.IGNORECASE
+    # (?<!\d) keeps "10,5%" imperial stouts out of the non-alcoholic bucket.
+    r"alkoholfri|non.?alc\w*|zero|easy rider|(?<!\d)0\s*[.,]\s*[0-5]\s*%", re.IGNORECASE
 )
 # "20cl 57:-" / "40cl 97" volume+price pairs (Svenska Brasserier format).
 _VOL_PRICE_PAIR_RE = re.compile(r"(\d{1,3})\s*cl\s+(\d{2,3})(?:\s*:-)?\b", re.IGNORECASE)
