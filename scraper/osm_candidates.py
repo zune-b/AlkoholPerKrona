@@ -31,7 +31,18 @@ CANDIDATES_PATH = DATA_DIR / "candidates.json"
 RESTAURANTS_PATH = DATA_DIR / "restaurants.json"
 BLOCKLIST_PATH = DATA_DIR / "candidates_blocklist.json"
 
-OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_URLS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+]
+# overpass-api.de answers 406 to anonymous/default user agents — identify per
+# their usage policy (https://wiki.openstreetmap.org/wiki/Overpass_API).
+OVERPASS_HEADERS = {
+    "User-Agent": (
+        "alkoholperkrona-bot/0.1 "
+        "(+https://github.com/zune-b/AlkoholPerKrona; weekly venue discovery)"
+    )
+}
 # Central Stockholm — matches scraper/validate.py's bounds.
 BBOX = "59.28,17.95,59.40,18.20"
 QUERY = f"""
@@ -72,12 +83,19 @@ def main() -> int:
     known_hosts |= set(block.get("hosts", []))
     known_hosts.discard("")
 
-    try:
-        resp = requests.post(OVERPASS_URL, data={"data": QUERY}, timeout=120)
-        resp.raise_for_status()
-        elements = resp.json().get("elements", [])
-    except Exception as exc:  # noqa: BLE001 — weekly retry handles transients
-        print(f"Overpass query failed (will retry next week): {exc}", file=sys.stderr)
+    elements = None
+    for url in OVERPASS_URLS:
+        try:
+            resp = requests.post(
+                url, data={"data": QUERY}, headers=OVERPASS_HEADERS, timeout=120
+            )
+            resp.raise_for_status()
+            elements = resp.json().get("elements", [])
+            break
+        except Exception as exc:  # noqa: BLE001 — try next mirror
+            print(f"Overpass mirror {url} failed: {exc}", file=sys.stderr)
+    if elements is None:
+        print("all Overpass mirrors failed (will retry next week)", file=sys.stderr)
         return 0
 
     added = 0
