@@ -6,6 +6,7 @@ on:
     paths:
       - "site/**"
       - "data/restaurants.json"
+      - "data/happy_hours.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -36,6 +37,8 @@ jobs:
           mkdir dist
           cp -r site/. dist/
           cp data/restaurants.json dist/restaurants.json
+          cp data/history.json dist/history.json
+          cp data/happy_hours.json dist/happy_hours.json
 
       - uses: actions/upload-pages-artifact@v4
         with:

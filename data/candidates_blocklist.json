@@ -1,0 +1,5 @@
+{
+  "_comment": "Venues the OSM auto-discovery must never (re-)add: dead sites, venues that publish no prices, or pages that produced false positives.",
+  "ids": ["norra_brunn", "bestick", "knut", "bagatelle", "lion_bar"],
+  "hosts": ["norrabrunn.se", "lionbar.se", "bestick.nu", "bagatelle.se", "knutostermalm.se"]
+}

@@ -1,0 +1,45 @@
+name: OSM venue discovery
+
+on:
+  schedule:
+    # Mondays 03:23 UTC — before the nightly scrape gets to try newcomers
+    - cron: "23 3 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: osm-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - run: pip install requests
+
+      - run: python -m scraper.osm_candidates
+
+      - name: Commit new candidates
+        run: |
+          if [[ -z "$(git status --porcelain data/candidates.json)" ]]; then
+            echo "No new candidates."
+            exit 0
+          fi
+          git config user.name  "alkoholperkrona-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/candidates.json
+          git commit -m "data: new candidate venues from OpenStreetMap ($(date -u +%Y-%m-%d))"
+          for attempt in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "push attempt $attempt rejected; rebasing on origin/main"
+            git pull --rebase --autostash origin main
+          done
+          echo "give up after 5 push attempts"
+          exit 1

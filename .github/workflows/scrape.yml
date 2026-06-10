@@ -37,6 +37,9 @@ jobs:
       - name: Discover new venues from candidates backlog
         run: python -m scraper.discovery
 
+      - name: Record price history
+        run: python -m scraper.history
+
       - name: Validate scraped data
         run: |
           set +e
@@ -53,13 +56,13 @@ jobs:
 
       - name: Commit updated data
         run: |
-          if [[ -z "$(git status --porcelain data/restaurants.json)" ]]; then
+          if [[ -z "$(git status --porcelain data/restaurants.json data/history.json)" ]]; then
             echo "No changes."
             exit 0
           fi
           git config user.name  "alkoholperkrona-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/restaurants.json
+          git add data/restaurants.json data/history.json
           git commit -m "data: refresh beer prices ($(date -u +%Y-%m-%d))"
           # Rebase-and-retry up to 5 times to survive races with other
           # pushes (concurrent merges, parallel workflow runs).

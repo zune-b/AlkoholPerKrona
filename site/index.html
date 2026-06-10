@@ -44,11 +44,33 @@
   <aside class="panel" id="panel" aria-label="Topplista">
     <button class="panel__handle" id="panel-toggle" aria-expanded="false" aria-controls="ranks">
       <span class="panel__grip" aria-hidden="true"></span>
-      <span class="panel__title">Topplista <em>kr per centiliter</em></span>
+      <span class="panel__title">Topplista</span>
+      <span class="seg" role="group" aria-label="Sortering">
+        <button class="seg__btn seg--active" id="mode-value" type="button">billigast</button>
+        <button class="seg__btn" id="mode-distance" type="button" disabled>närmast</button>
+      </span>
       <span class="panel__chev" aria-hidden="true">▾</span>
     </button>
+    <div class="filters" id="filters">
+      <input class="filters__search" id="search" type="search"
+             placeholder="Sök ställe eller öl…" aria-label="Sök" autocomplete="off" />
+      <div class="filters__chips">
+        <button class="fchip fchip--active" type="button" data-filter="all">Alla</button>
+        <button class="fchip fchip--green" type="button" data-filter="cheap">≤55</button>
+        <button class="fchip fchip--yellow" type="button" data-filter="mid">56–79</button>
+        <button class="fchip fchip--red" type="button" data-filter="expensive">80+</button>
+        <button class="fchip" type="button" data-filter="hh">🍻 HH</button>
+        <button class="fchip" type="button" data-toggle="stale">dölj ⚠</button>
+      </div>
+    </div>
     <ol class="ranks" id="ranks"></ol>
   </aside>
+
+  <button class="locate" id="locate" type="button" aria-label="Visa billigaste ölen nära mig" title="Nära mig">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <path fill="currentColor" d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9 3h-2.07A7 7 0 0 0 13 5.07V3h-2v2.07A7 7 0 0 0 5.07 11H3v2h2.07A7 7 0 0 0 11 18.93V21h2v-2.07A7 7 0 0 0 18.93 13H21v-2z"/>
+    </svg>
+  </button>
 
   <footer class="credit" style="--i:4">
     <span>priser skrapas dagligen från ställenas egna menyer</span>
