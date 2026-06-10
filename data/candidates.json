@@ -198,5 +198,765 @@
     "lat": 59.3318,
     "lon": 18.0582,
     "url": "https://www.belgobaren.se/"
+  },
+  {
+    "id": "20hundra5",
+    "name": "20hundra5",
+    "address": "Stockholm",
+    "lat": 59.34415,
+    "lon": 18.03971,
+    "url": "https://www.noll5.se/"
+  },
+  {
+    "id": "amici_nostri",
+    "name": "Amici Nostri",
+    "address": "Stockholm",
+    "lat": 59.30761,
+    "lon": 18.07719,
+    "url": "https://amicinostri.se"
+  },
+  {
+    "id": "bagpipers_s_inn",
+    "name": "Bagpipers's Inn",
+    "address": "Stockholm",
+    "lat": 59.34036,
+    "lon": 18.03114,
+    "url": "https://bagpipers.se/"
+  },
+  {
+    "id": "bar_agrikultur",
+    "name": "Bar Agrikultur",
+    "address": "Stockholm",
+    "lat": 59.31287,
+    "lon": 18.08323,
+    "url": "https://baragrikultur.com"
+  },
+  {
+    "id": "bar_kaja",
+    "name": "Bar Kaja",
+    "address": "Stockholm",
+    "lat": 59.31787,
+    "lon": 18.07005,
+    "url": "https://barkaja.org/"
+  },
+  {
+    "id": "bar_libertin",
+    "name": "Bar Libertin",
+    "address": "Stockholm",
+    "lat": 59.30615,
+    "lon": 17.99758,
+    "url": "https://www.barlibertin.se/"
+  },
+  {
+    "id": "bar_nacka",
+    "name": "Bar Nacka",
+    "address": "Stockholm",
+    "lat": 59.30967,
+    "lon": 18.0826,
+    "url": "https://barnacka.se"
+  },
+  {
+    "id": "bar_nordic",
+    "name": "Bar Nordic",
+    "address": "Stockholm",
+    "lat": 59.3346,
+    "lon": 18.05606,
+    "url": "https://www.barnordic.com"
+  },
+  {
+    "id": "bar_nimes",
+    "name": "Bar Nîmes",
+    "address": "Stockholm",
+    "lat": 59.34238,
+    "lon": 18.06547,
+    "url": "https://bar-nimes.se"
+  },
+  {
+    "id": "bar_talea",
+    "name": "Bar Talea",
+    "address": "Stockholm",
+    "lat": 59.32436,
+    "lon": 18.07381,
+    "url": "https://bartalea.se"
+  },
+  {
+    "id": "bar_a_vins",
+    "name": "Bar à Vins",
+    "address": "Stockholm",
+    "lat": 59.33675,
+    "lon": 18.09109,
+    "url": "http://www.baravins.se"
+  },
+  {
+    "id": "baras_backe",
+    "name": "Baras Backe",
+    "address": "Stockholm",
+    "lat": 59.3165,
+    "lon": 18.07232,
+    "url": "https://baras.se/barasbacke/"
+  },
+  {
+    "id": "beer_n_play",
+    "name": "Beer n' Play",
+    "address": "Stockholm",
+    "lat": 59.31645,
+    "lon": 18.04152,
+    "url": "https://beernplay.se/"
+  },
+  {
+    "id": "biljardpalatset",
+    "name": "Biljardpalatset",
+    "address": "Stockholm",
+    "lat": 59.33575,
+    "lon": 18.03385,
+    "url": "https://www.biljardpalatset.se/"
+  },
+  {
+    "id": "birka_bowling",
+    "name": "Birka Bowling",
+    "address": "Stockholm",
+    "lat": 59.34029,
+    "lon": 18.03509,
+    "url": "https://birkabowling.se/"
+  },
+  {
+    "id": "bishops_arms",
+    "name": "Bishops arms",
+    "address": "Stockholm",
+    "lat": 59.36113,
+    "lon": 17.96874,
+    "url": "https://www.bishopsarms.com/vara-pubar/stockholm/sundbyberg/"
+  },
+  {
+    "id": "bistro_aspen",
+    "name": "Bistro Aspen",
+    "address": "Stockholm",
+    "lat": 59.30606,
+    "lon": 18.00662,
+    "url": "https://www.bioaspen.se/bistro/"
+  },
+  {
+    "id": "bistro_doma",
+    "name": "Bistro Doma",
+    "address": "Stockholm",
+    "lat": 59.33903,
+    "lon": 18.08097,
+    "url": "https://www.doma.se"
+  },
+  {
+    "id": "black_brown_inn",
+    "name": "Black & Brown Inn",
+    "address": "Stockholm",
+    "lat": 59.3191,
+    "lon": 18.06323,
+    "url": "https://www.blackandbrown.se/"
+  },
+  {
+    "id": "black_elk",
+    "name": "Black Elk",
+    "address": "Stockholm",
+    "lat": 59.34092,
+    "lon": 18.05808,
+    "url": "https://crazyhorse.se"
+  },
+  {
+    "id": "boule_bar",
+    "name": "Boule Bar",
+    "address": "Stockholm",
+    "lat": 59.31274,
+    "lon": 18.02744,
+    "url": "https://www.boulebar.se/bar-restaurang/stockholm-tryckeriet/"
+  },
+  {
+    "id": "bron",
+    "name": "Bron",
+    "address": "Stockholm",
+    "lat": 59.33798,
+    "lon": 18.03565,
+    "url": "https://restaurangbron.com"
+  },
+  {
+    "id": "brother_tuck",
+    "name": "Brother Tuck",
+    "address": "Stockholm",
+    "lat": 59.30982,
+    "lon": 18.07584,
+    "url": "https://brothertuck.se"
+  },
+  {
+    "id": "brannerian",
+    "name": "Brännerian",
+    "address": "Stockholm",
+    "lat": 59.31547,
+    "lon": 18.0891,
+    "url": "https://www.brannerian.se"
+  },
+  {
+    "id": "branneriet",
+    "name": "Bränneriet",
+    "address": "Stockholm",
+    "lat": 59.29664,
+    "lon": 18.05151,
+    "url": "https://www.bränneriet.se/"
+  },
+  {
+    "id": "batard",
+    "name": "Bâtard",
+    "address": "Stockholm",
+    "lat": 59.33392,
+    "lon": 18.07664,
+    "url": "https://batardsthlm.se"
+  },
+  {
+    "id": "cadierbaren",
+    "name": "Cadierbaren",
+    "address": "Stockholm",
+    "lat": 59.32955,
+    "lon": 18.07561,
+    "url": "https://grandhotel.se/mat-dryck/cadierbaren"
+  },
+  {
+    "id": "cafe_caminito",
+    "name": "Café Caminito",
+    "address": "Stockholm",
+    "lat": 59.30725,
+    "lon": 18.05585,
+    "url": "https://instagram.com/cafecaminito_stockholm?igshid=YmMyMTA2M2Y="
+  },
+  {
+    "id": "charles_dickens",
+    "name": "Charles Dickens",
+    "address": "Stockholm",
+    "lat": 59.31463,
+    "lon": 18.07564,
+    "url": "https://charles-dickens.se"
+  },
+  {
+    "id": "chewie_s_bar",
+    "name": "Chewie's Bar",
+    "address": "Stockholm",
+    "lat": 59.3269,
+    "lon": 18.04294,
+    "url": "https://www.chewiesbar.com/"
+  },
+  {
+    "id": "combo_vinbaren",
+    "name": "Combo vinbaren",
+    "address": "Stockholm",
+    "lat": 59.34398,
+    "lon": 18.05476,
+    "url": "https://combovinbaren.com"
+  },
+  {
+    "id": "continental_bar",
+    "name": "Continental Bar",
+    "address": "Stockholm",
+    "lat": 59.31296,
+    "lon": 18.08273,
+    "url": "https://www.continentalbar.se"
+  },
+  {
+    "id": "coquetel_social",
+    "name": "Coquetel social",
+    "address": "Stockholm",
+    "lat": 59.3366,
+    "lon": 18.07204,
+    "url": "https://www.coquetelsocial.se/"
+  },
+  {
+    "id": "cork",
+    "name": "Cork",
+    "address": "Stockholm",
+    "lat": 59.3245,
+    "lon": 18.06864,
+    "url": "https://www.corkvinbar.se"
+  },
+  {
+    "id": "corner_bar",
+    "name": "Corner Bar",
+    "address": "Stockholm",
+    "lat": 59.32323,
+    "lon": 18.07187,
+    "url": "https://cornerbar.se"
+  },
+  {
+    "id": "corner_club",
+    "name": "Corner Club",
+    "address": "Stockholm",
+    "lat": 59.32328,
+    "lon": 18.06933,
+    "url": "http://www.cornerclub.se/"
+  },
+  {
+    "id": "corno_strada",
+    "name": "Corno Strada",
+    "address": "Stockholm",
+    "lat": 59.3185,
+    "lon": 18.06064,
+    "url": "https://www.cornostrada.com/"
+  },
+  {
+    "id": "corvina",
+    "name": "Corvina",
+    "address": "Stockholm",
+    "lat": 59.32314,
+    "lon": 18.07106,
+    "url": "https://corvina.nu/"
+  },
+  {
+    "id": "debaser_pontonen",
+    "name": "Debaser Pontonen",
+    "address": "Stockholm",
+    "lat": 59.31441,
+    "lon": 18.03238,
+    "url": "https://www.debaserpontonen.se"
+  },
+  {
+    "id": "den_grone_jagaren",
+    "name": "Den Gröne Jägaren",
+    "address": "Stockholm",
+    "lat": 59.31347,
+    "lon": 18.07349,
+    "url": "https://www.gronejagaren.com/"
+  },
+  {
+    "id": "diset",
+    "name": "Diset",
+    "address": "Örnsbergsvägen 2, Stockholm",
+    "lat": 59.30555,
+    "lon": 17.98866,
+    "url": "https://www.pubdiset.se/"
+  },
+  {
+    "id": "dryck",
+    "name": "Dryck",
+    "address": "Stockholm",
+    "lat": 59.31735,
+    "lon": 18.06351,
+    "url": "https://www.dryckvinbar.se"
+  },
+  {
+    "id": "eken",
+    "name": "Eken",
+    "address": "Stockholm",
+    "lat": 59.3205,
+    "lon": 18.07002,
+    "url": "https://ekenbar.se/"
+  },
+  {
+    "id": "el_clasico",
+    "name": "El Clasico",
+    "address": "Stockholm",
+    "lat": 59.31246,
+    "lon": 18.08178,
+    "url": "https://gastrogate.com/restaurang/elclasico/"
+  },
+  {
+    "id": "erlands",
+    "name": "Erlands",
+    "address": "Stockholm",
+    "lat": 59.34048,
+    "lon": 18.0403,
+    "url": "https://www.erlandsbar.se"
+  },
+  {
+    "id": "fabelbar",
+    "name": "Fabelbar",
+    "address": "Stockholm",
+    "lat": 59.30569,
+    "lon": 18.00059,
+    "url": "https://fabelbar.se/"
+  },
+  {
+    "id": "fjaderholmarnas_bryggeri",
+    "name": "Fjäderholmarnas Bryggeri",
+    "address": "Stockholm",
+    "lat": 59.32913,
+    "lon": 18.17512,
+    "url": "https://www.fjaderholmarnasbryggeri.se"
+  },
+  {
+    "id": "flying_scotsman_inn",
+    "name": "Flying Scotsman Inn",
+    "address": "Stockholm",
+    "lat": 59.334,
+    "lon": 18.03723,
+    "url": "https://www.flying.nu/"
+  },
+  {
+    "id": "gemla_vinbar",
+    "name": "Gemla Vinbar",
+    "address": "Stockholm",
+    "lat": 59.31163,
+    "lon": 18.05984,
+    "url": "https://www.gemlavinbar.se/"
+  },
+  {
+    "id": "golf_baren_aspudden",
+    "name": "Golf Baren Aspudden",
+    "address": "Hövdingagatan 14, Stockholm",
+    "lat": 59.30741,
+    "lon": 17.99484,
+    "url": "https://golfbaren.se/aspudden/"
+  },
+  {
+    "id": "goma",
+    "name": "Goma",
+    "address": "Stockholm",
+    "lat": 59.3384,
+    "lon": 18.07516,
+    "url": "https://gomagastropub.se/"
+  },
+  {
+    "id": "grain_cafe",
+    "name": "Grain café",
+    "address": "Stockholm",
+    "lat": 59.32926,
+    "lon": 18.04195,
+    "url": "https://www.graincafe.se"
+  },
+  {
+    "id": "gullmarssons",
+    "name": "Gullmarssons",
+    "address": "Stockholm",
+    "lat": 59.29829,
+    "lon": 18.07968,
+    "url": "http://www.gullmarssons.com"
+  },
+  {
+    "id": "haket",
+    "name": "Haket",
+    "address": "Stockholm",
+    "lat": 59.31494,
+    "lon": 18.07818,
+    "url": "https://haket.live"
+  },
+  {
+    "id": "hallen_sodermalm",
+    "name": "Hallen Södermalm",
+    "address": "Stockholm",
+    "lat": 59.30992,
+    "lon": 18.07579,
+    "url": "https://www.hallen.one"
+  },
+  {
+    "id": "harvest_home",
+    "name": "Harvest Home",
+    "address": "Stockholm",
+    "lat": 59.31339,
+    "lon": 18.08391,
+    "url": "https://harvesthome.se/"
+  },
+  {
+    "id": "herno_gin_bar",
+    "name": "Hernö Gin Bar",
+    "address": "Stockholm",
+    "lat": 59.31974,
+    "lon": 18.07038,
+    "url": "https://www.hernogin.com/herno-gin-bar/stockholm"
+  },
+  {
+    "id": "hilma",
+    "name": "Hilma",
+    "address": "Torsgatan 10, Stockholm",
+    "lat": 59.33577,
+    "lon": 18.05115,
+    "url": "https://www.hilmastockholm.com/"
+  },
+  {
+    "id": "hirschenkeller",
+    "name": "Hirschenkeller",
+    "address": "Stockholm",
+    "lat": 59.33153,
+    "lon": 18.03117,
+    "url": "https://www.hirschenkeller.se/"
+  },
+  {
+    "id": "holly_bush_bar_and_restaurant",
+    "name": "Holly Bush Bar and Restaurant",
+    "address": "Stockholm",
+    "lat": 59.31141,
+    "lon": 18.07437,
+    "url": "https://hollybush.se/"
+  },
+  {
+    "id": "hommage",
+    "name": "Hommage",
+    "address": "Stockholm",
+    "lat": 59.31742,
+    "lon": 18.05595,
+    "url": "https://www.hommage.se"
+  },
+  {
+    "id": "honeyhoney",
+    "name": "HoneyHoney",
+    "address": "Stockholm",
+    "lat": 59.31471,
+    "lon": 18.07631,
+    "url": "https://honeyhoney.se"
+  },
+  {
+    "id": "hop_vine",
+    "name": "Hop & Vine",
+    "address": "Stockholm",
+    "lat": 59.33396,
+    "lon": 18.06523,
+    "url": "https://hopandvine.se"
+  },
+  {
+    "id": "humble_frank",
+    "name": "Humble & Frank",
+    "address": "Stockholm",
+    "lat": 59.3429,
+    "lon": 18.03832,
+    "url": "https://humbleandfrank.se"
+  },
+  {
+    "id": "humlan",
+    "name": "Humlan",
+    "address": "Stockholm",
+    "lat": 59.3374,
+    "lon": 18.07343,
+    "url": "https://humlanstockholm.se"
+  },
+  {
+    "id": "icebar",
+    "name": "IceBar",
+    "address": "Stockholm",
+    "lat": 59.33209,
+    "lon": 18.05709,
+    "url": "https://www.icebarstockholm.se"
+  },
+  {
+    "id": "john_scotts",
+    "name": "John Scotts",
+    "address": "Stockholm",
+    "lat": 59.33524,
+    "lon": 18.05243,
+    "url": "https://johnscotts.se/lillabantorget/"
+  },
+  {
+    "id": "jolo",
+    "name": "Jolo",
+    "address": "Stockholm",
+    "lat": 59.34116,
+    "lon": 18.04843,
+    "url": "https://www.jolo.se/"
+  },
+  {
+    "id": "karamell",
+    "name": "Karamell",
+    "address": "Stockholm",
+    "lat": 59.32337,
+    "lon": 18.07551,
+    "url": "https://www.karamell.com/"
+  },
+  {
+    "id": "kelly_s",
+    "name": "Kelly's",
+    "address": "Stockholm",
+    "lat": 59.31449,
+    "lon": 18.07456,
+    "url": "https://kellysbar.se"
+  },
+  {
+    "id": "klosters_pub",
+    "name": "Klosters pub",
+    "address": "Stockholm",
+    "lat": 59.31802,
+    "lon": 18.05448,
+    "url": "https://www.pubkloster.se"
+  },
+  {
+    "id": "krukan",
+    "name": "Krukan",
+    "address": "Stockholm",
+    "lat": 59.31712,
+    "lon": 18.05533,
+    "url": "https://www.krukansportbar.se"
+  },
+  {
+    "id": "kvarnens_uteservering",
+    "name": "Kvarnens uteservering",
+    "address": "Stockholm",
+    "lat": 59.31532,
+    "lon": 18.07138,
+    "url": "https://www.kvarnen.com/"
+  },
+  {
+    "id": "kallaren_peder_muur",
+    "name": "Källaren Peder Muur",
+    "address": "Stockholm",
+    "lat": 59.34587,
+    "lon": 18.05972,
+    "url": "https://www.pedermuur.com"
+  },
+  {
+    "id": "laika",
+    "name": "Laika",
+    "address": "Stockholm",
+    "lat": 59.31671,
+    "lon": 18.03362,
+    "url": "https://www.hornhuset.se"
+  },
+  {
+    "id": "le_hibou",
+    "name": "Le Hibou",
+    "address": "Stockholm",
+    "lat": 59.33149,
+    "lon": 18.0747,
+    "url": "https://bankhotel.se/restaurants/le-hibou/"
+  },
+  {
+    "id": "lemon",
+    "name": "Lemon",
+    "address": "Stockholm",
+    "lat": 59.3296,
+    "lon": 18.04372,
+    "url": "https://www.lemonbar.se"
+  },
+  {
+    "id": "leoparden",
+    "name": "Leoparden",
+    "address": "Stockholm",
+    "lat": 59.33991,
+    "lon": 18.06086,
+    "url": "https://bistroleoparden.se"
+  },
+  {
+    "id": "lilla_wien",
+    "name": "Lilla Wien",
+    "address": "Stockholm",
+    "lat": 59.31411,
+    "lon": 18.06429,
+    "url": "http://www.lillawien.se"
+  },
+  {
+    "id": "map_petite_maison",
+    "name": "MAP Petite Maison",
+    "address": "Stockholm",
+    "lat": 59.33287,
+    "lon": 18.05763,
+    "url": "https://www.mapetitemaison.se/"
+  },
+  {
+    "id": "mackinlay_s_inn",
+    "name": "MacKinlay's Inn",
+    "address": "Stockholm",
+    "lat": 59.33443,
+    "lon": 18.03179,
+    "url": "http://www.mackinlaysinn.se/"
+  },
+  {
+    "id": "medis_kok_bar",
+    "name": "Medis kök & bar",
+    "address": "Stockholm",
+    "lat": 59.31537,
+    "lon": 18.07175,
+    "url": "https://www.mediskokochbar.se"
+  },
+  {
+    "id": "mikkeller_sodermalm",
+    "name": "Mikkeller Södermalm",
+    "address": "Stockholm",
+    "lat": 59.31491,
+    "lon": 18.07649,
+    "url": "https://www.mikkeller.com/locations/mikkeller-soedermalm"
+  },
+  {
+    "id": "mister_plankstek",
+    "name": "Mister Plankstek",
+    "address": "Stockholm",
+    "lat": 59.31522,
+    "lon": 18.08241,
+    "url": "https://www.misterplankstek.se/"
+  },
+  {
+    "id": "molly_malone_s",
+    "name": "Molly Malone's",
+    "address": "Stockholm",
+    "lat": 59.34193,
+    "lon": 18.04782,
+    "url": "https://mollymalone.se"
+  },
+  {
+    "id": "mondo",
+    "name": "Mondo",
+    "address": "Stockholm",
+    "lat": 59.3441,
+    "lon": 18.05663,
+    "url": "https://www.mondotapas.com"
+  },
+  {
+    "id": "mosebacketerrassen",
+    "name": "Mosebacketerrassen",
+    "address": "Stockholm",
+    "lat": 59.31838,
+    "lon": 18.07521,
+    "url": "https://sodrateatern.com/"
+  },
+  {
+    "id": "marthas",
+    "name": "Märthas",
+    "address": "Söder Mälarstrandskajen 16, Stockholm",
+    "lat": 59.32137,
+    "lon": 18.05632,
+    "url": "https://www.msmartha.se"
+  },
+  {
+    "id": "mastarvillans_bar",
+    "name": "Mästarvillans bar",
+    "address": "Stockholm",
+    "lat": 59.38266,
+    "lon": 18.18364,
+    "url": "https://boson.nu/mat-dryck/"
+  },
+  {
+    "id": "n3rds_video_game_bar",
+    "name": "N3rds Video Game Bar",
+    "address": "Stockholm",
+    "lat": 59.31247,
+    "lon": 18.0753,
+    "url": "https://www.n3rdsbar.com/"
+  },
+  {
+    "id": "nalen",
+    "name": "Nalen",
+    "address": "Stockholm",
+    "lat": 59.33718,
+    "lon": 18.06776,
+    "url": "http://nalen.se/"
+  },
+  {
+    "id": "norrport",
+    "name": "Norrport",
+    "address": "Stockholm",
+    "lat": 59.34841,
+    "lon": 18.05823,
+    "url": "https://norrport.se"
+  },
+  {
+    "id": "o_learys",
+    "name": "O'Learys",
+    "address": "Stockholm",
+    "lat": 59.33008,
+    "lon": 18.05905,
+    "url": "https://olearys.com/sv-se/stockholm-central/"
+  },
+  {
+    "id": "o_learys_tolv",
+    "name": "O'Learys Tolv",
+    "address": "Arenavägen 69, Stockholm",
+    "lat": 59.29179,
+    "lon": 18.08365,
+    "url": "https://olearys.se/stockholm-tolv-event-center/"
+  },
+  {
+    "id": "old_beefeater_inn",
+    "name": "Old Beefeater Inn",
+    "address": "Stockholm",
+    "lat": 59.31854,
+    "lon": 18.07127,
+    "url": "https://oldbeefeaterinn.com"
   }
 ]
