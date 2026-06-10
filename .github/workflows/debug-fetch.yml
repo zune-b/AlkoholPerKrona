@@ -1,0 +1,28 @@
+name: Debug fetch menus
+
+on:
+  push:
+    branches: [fix/selectors]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r scraper/requirements.txt
+      - run: python scraper/debug_probe.py
+      - name: Verify scrapers end-to-end (does not commit anything)
+        run: python -m scraper.main
+      - name: Show scraped data
+        run: cat data/restaurants.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: html-snapshots
+          path: html/
+          if-no-files-found: ignore
