@@ -29,6 +29,23 @@ Grodan Grev Ture.)
 Each has its own scraper at `scraper/restaurants/<id>.py`. Add or remove a
 restaurant by adding/removing one file (see `_template.py`).
 
+## Website
+
+`site/` is a no-build static site (HTML + CSS + vanilla JS + Leaflet with
+CARTO dark tiles): full-bleed map with price-bubble markers (gold crown =
+best kr/cl in town), a kr/cl rank panel (right rail on desktop, bottom
+sheet on mobile) and live stats. `.github/workflows/pages.yml` deploys it
+to GitHub Pages on every push that touches `site/` or
+`data/restaurants.json` — so the site re-publishes itself with fresh
+prices after every nightly scrape.
+
+Preview locally:
+
+```bash
+cp data/restaurants.json site/ && cd site && python3 -m http.server 8000
+# open http://localhost:8000
+```
+
 ## Run the scraper locally
 
 ```bash

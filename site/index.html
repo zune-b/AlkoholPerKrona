@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>alkoholperkrona — Stockholms billigaste öl, kartlagd</title>
+  <meta name="description" content="Vi skrapar Stockholms restaurang- och pubmenyer varje natt och rankar stadens billigaste öl per krona. Live-karta med priser." />
+  <meta property="og:title" content="alkoholperkrona" />
+  <meta property="og:description" content="Stockholms billigaste öl, kartlagd varje natt." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0b0d" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="map" aria-label="Karta över Stockholms billigaste öl"></div>
+
+  <header class="brand" style="--i:0">
+    <h1 class="brand__name">alkohol<span>per</span>krona</h1>
+    <p class="brand__tag">Stockholms billigaste öl · kartlagd varje natt</p>
+  </header>
+
+  <section class="stats" aria-label="Statistik">
+    <div class="chip" style="--i:1">
+      <span class="chip__num" id="stat-venues">0</span>
+      <span class="chip__label">ställen</span>
+    </div>
+    <div class="chip chip--gold" style="--i:2">
+      <span class="chip__num"><span id="stat-cheapest">0</span> kr</span>
+      <span class="chip__label">billigast just nu</span>
+    </div>
+    <div class="chip" style="--i:3">
+      <span class="chip__num" id="stat-updated">–</span>
+      <span class="chip__label">uppdaterad</span>
+    </div>
+  </section>
+
+  <aside class="panel" id="panel" aria-label="Topplista">
+    <button class="panel__handle" id="panel-toggle" aria-expanded="false" aria-controls="ranks">
+      <span class="panel__grip" aria-hidden="true"></span>
+      <span class="panel__title">Topplista <em>kr per centiliter</em></span>
+      <span class="panel__chev" aria-hidden="true">▾</span>
+    </button>
+    <ol class="ranks" id="ranks"></ol>
+  </aside>
+
+  <footer class="credit" style="--i:4">
+    <span>priser skrapas dagligen från ställenas egna menyer</span>
+    <a href="https://github.com/zune-b/Testla-" rel="noopener" target="_blank">källkod ↗</a>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="./app.js" defer></script>
+</body>
+</html>
