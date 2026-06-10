@@ -16,11 +16,11 @@ from pathlib import Path
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "restaurants.json"
 
-EXPECTED_COUNT = 10
+MIN_COUNT = 10
 
-# Östermalm bounding box
-LAT_MIN, LAT_MAX = 59.30, 59.37
-LON_MIN, LON_MAX = 18.04, 18.13
+# Central Stockholm bounding box (Södermalm–Vasastan, Kungsholmen–Gärdet)
+LAT_MIN, LAT_MAX = 59.28, 59.40
+LON_MIN, LON_MAX = 17.95, 18.20
 
 PRICE_MIN, PRICE_MAX = 30, 300
 VOLUME_MIN, VOLUME_MAX = 10, 100
@@ -146,8 +146,8 @@ def validate(path: Path = DATA_PATH) -> list[str]:
     if not isinstance(data, list):
         return [f"top-level value must be a JSON array, got {type(data).__name__}"]
 
-    if len(data) != EXPECTED_COUNT:
-        errors.append(f"expected exactly {EXPECTED_COUNT} entries, found {len(data)}")
+    if len(data) < MIN_COUNT:
+        errors.append(f"expected at least {MIN_COUNT} entries, found {len(data)}")
 
     ids = [e.get("id") for e in data if isinstance(e, dict) and "id" in e]
     duplicates = sorted({i for i in ids if ids.count(i) > 1})

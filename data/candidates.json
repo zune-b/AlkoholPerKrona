@@ -1,0 +1,82 @@
+[
+  {
+    "id": "wirstroms",
+    "name": "Wirströms Pub",
+    "address": "Stora Nygatan 13, 111 27 Stockholm",
+    "lat": 59.3239,
+    "lon": 18.0686,
+    "url": "https://www.wirstromspub.se/"
+  },
+  {
+    "id": "engelen",
+    "name": "Engelen",
+    "address": "Kornhamnstorg 59B, 111 27 Stockholm",
+    "lat": 59.3221,
+    "lon": 18.0717,
+    "url": "https://www.engelen.se/"
+  },
+  {
+    "id": "oconnells",
+    "name": "O'Connells Irish Pub",
+    "address": "Stora Nygatan 21, 111 27 Stockholm",
+    "lat": 59.3234,
+    "lon": 18.068,
+    "url": "https://www.oconnells.se/"
+  },
+  {
+    "id": "liffey",
+    "name": "The Liffey",
+    "address": "Stora Nygatan 40-42, 111 27 Stockholm",
+    "lat": 59.3226,
+    "lon": 18.0696,
+    "url": "https://www.theliffey.se/"
+  },
+  {
+    "id": "man_in_the_moon",
+    "name": "Man in the Moon",
+    "address": "Tegnérgatan 2C, 113 58 Stockholm",
+    "lat": 59.3417,
+    "lon": 18.0577,
+    "url": "https://www.maninthemoon.se/"
+  },
+  {
+    "id": "omnipollos_hatt",
+    "name": "Omnipollos hatt",
+    "address": "Hökens gata 1A, 116 46 Stockholm",
+    "lat": 59.3175,
+    "lon": 18.074,
+    "url": "https://omnipolloshatt.com/"
+  },
+  {
+    "id": "katarina_olkafe",
+    "name": "Katarina Ölkafé",
+    "address": "Katarina Bangata 27, 116 39 Stockholm",
+    "lat": 59.3119,
+    "lon": 18.0848,
+    "url": "https://katarinaolkafe.se/"
+  },
+  {
+    "id": "morfar_ginko",
+    "name": "Morfar Ginko",
+    "address": "Swedenborgsgatan 13, 118 48 Stockholm",
+    "lat": 59.3146,
+    "lon": 18.0628,
+    "url": "https://www.morfarginko.se/"
+  },
+  {
+    "id": "tjoget",
+    "name": "Tjoget",
+    "address": "Hornsbruksgatan 24, 117 34 Stockholm",
+    "lat": 59.3128,
+    "lon": 18.0337,
+    "url": "https://tjoget.com/"
+  },
+  {
+    "id": "nya_carnegie",
+    "name": "Nya Carnegiebryggeriet",
+    "address": "Ljusslingan 17, 120 31 Stockholm",
+    "lat": 59.3033,
+    "lon": 18.0966,
+    "url": "https://www.nyacarnegiebryggeriet.se/"
+  }
+]

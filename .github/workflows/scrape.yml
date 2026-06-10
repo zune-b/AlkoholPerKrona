@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - "scraper/**"
+      - "data/candidates.json"
       - ".github/workflows/scrape.yml"
 
 concurrency:
@@ -32,6 +33,9 @@ jobs:
       - run: pip install -r scraper/requirements.txt
 
       - run: python -m scraper.main
+
+      - name: Discover new venues from candidates backlog
+        run: python -m scraper.discovery
 
       - name: Validate scraped data
         run: |
