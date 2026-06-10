@@ -1,4 +1,4 @@
-from scraper.lib import Beer, fetch, find_cheapest_beer
+from scraper.lib import Beer, fetch, find_cheapest_beer_svbr
 
 META = {
     "id": "teatergrillen",
@@ -11,4 +11,4 @@ META = {
 
 
 def scrape() -> Beer | None:
-    return find_cheapest_beer(fetch(META["source_url"]))
+    return find_cheapest_beer_svbr(fetch(META["source_url"]))

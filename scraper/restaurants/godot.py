@@ -6,7 +6,7 @@ META = {
     "address": "Grev Turegatan 36, 114 38 Stockholm",
     "lat": 59.3404,
     "lon": 18.0790,
-    "source_url": "https://godot.se/meny/",
+    "source_url": "https://godot.se/pages/meny",
 }
 
 
