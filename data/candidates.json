@@ -136,14 +136,6 @@
     "url": "https://bondenbar.se/"
   },
   {
-    "id": "norra_brunn",
-    "name": "Norra Brunn",
-    "address": "Surbrunnsgatan 33, 113 48 Stockholm",
-    "lat": 59.3445,
-    "lon": 18.0599,
-    "url": "https://norrabrunn.se/"
-  },
-  {
     "id": "the_bagpipers_inn",
     "name": "The Bagpiper's Inn",
     "address": "Rörstrandsgatan 21, 113 40 Stockholm",

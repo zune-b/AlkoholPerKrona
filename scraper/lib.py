@@ -94,7 +94,12 @@ _PRICE_RE = re.compile(r"(\d{2,4})\s*(?:kr|:-|sek)\b", re.IGNORECASE)
 _PRICE_BARE_RE = re.compile(r"\b(\d{2,4})\b")
 _VOLUME_RE = re.compile(r"(\d{2,3})\s*cl\b", re.IGNORECASE)
 _BEER_HEADING_RE = re.compile(r"\b(öl|ol|beer|öl\s*&|drycker|dryck|drinks)\b", re.IGNORECASE)
-_BEER_NEGATIVE_RE = re.compile(r"\b(vin|wine|cocktail|sprit|spirit|champagne)\b", re.IGNORECASE)
+_BEER_NEGATIVE_RE = re.compile(
+    r"\b(vin|wine|cocktail|sprit|spirit|champagne|"
+    r"entr[eé]|inträde|biljett|showbiljett|show|middag|matsal|lunch|barnmeny|"
+    r"barer|hyra|paket|catering|bröllop)\b",
+    re.IGNORECASE,
+)
 
 
 def parse_price(text: str) -> int | None:

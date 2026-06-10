@@ -130,23 +130,6 @@
     "stale": false
   },
   {
-    "id": "norra_brunn",
-    "name": "Norra Brunn",
-    "address": "Surbrunnsgatan 33, 113 48 Stockholm",
-    "lat": 59.3445,
-    "lon": 18.0599,
-    "source_url": "https://norrabrunn.se/",
-    "cheapest_beer": {
-      "name": "ENTRÈPRISER Showbiljett BAR (gäller vid drop-in) Middagsgäster matsal (gäller vi",
-      "volume_cl": null,
-      "price_sek": 295,
-      "kr_per_cl": null
-    },
-    "last_updated": "2026-06-10T10:07:16+00:00",
-    "stale": false,
-    "discovered": true
-  },
-  {
     "id": "nybrogatan38",
     "name": "Nybrogatan 38",
     "address": "Nybrogatan 38, 114 40 Stockholm",
@@ -154,7 +137,7 @@
     "lon": 18.08,
     "source_url": "https://nybrogatan38.com/menyer",
     "cheapest_beer": {
-      "name": "BRÄ UWEISSE - HEFE WEISSSE 5,1%, , AYINGER, GERMANY",
+      "name": "BRÄ UWEISSE - HEFE WEISSSE 5,1%, , AYINGER, GERMANY",
       "volume_cl": 33,
       "price_sek": 80,
       "kr_per_cl": 2.42
@@ -203,7 +186,7 @@
     "lon": 18.0748,
     "source_url": "https://svejk.se/dryck/",
     "cheapest_beer": {
-      "name": "Bernard ljus, opastöriserad",
+      "name": "Bernard ljus, opastoriserad",
       "volume_cl": 50,
       "price_sek": 94,
       "kr_per_cl": 1.88
