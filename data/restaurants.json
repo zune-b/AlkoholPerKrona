@@ -46,7 +46,7 @@
       "price_sek": 92,
       "kr_per_cl": 2.79
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -62,7 +62,7 @@
       "price_sek": 71,
       "kr_per_cl": null
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -79,7 +79,8 @@
       "kr_per_cl": null
     },
     "last_updated": "2026-06-10T10:06:21+00:00",
-    "stale": false
+    "stale": true,
+    "stale_reason": "HTTPSConnectionPool(host='internationalbar.se', port=443): Max retries exceeded with url: /menu/ (Caused by NewConnectionError(\"HTTPSConnection(host='internationalbar.se', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
   },
   {
     "id": "international_bar_kungsholmen",
@@ -95,7 +96,8 @@
       "kr_per_cl": null
     },
     "last_updated": "2026-06-10T10:06:21+00:00",
-    "stale": false
+    "stale": true,
+    "stale_reason": "HTTPSConnectionPool(host='internationalbar.se', port=443): Max retries exceeded with url: /menu/ (Caused by NewConnectionError(\"HTTPSConnection(host='internationalbar.se', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
   },
   {
     "id": "international_bar_norrmalm",
@@ -111,7 +113,8 @@
       "kr_per_cl": null
     },
     "last_updated": "2026-06-10T10:06:21+00:00",
-    "stale": false
+    "stale": true,
+    "stale_reason": "HTTPSConnectionPool(host='internationalbar.se', port=443): Max retries exceeded with url: /menu/ (Caused by NewConnectionError(\"HTTPSConnection(host='internationalbar.se', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
   },
   {
     "id": "lisa_elmqvist",
@@ -126,7 +129,7 @@
       "price_sek": 63,
       "kr_per_cl": null
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -137,12 +140,12 @@
     "lon": 18.08,
     "source_url": "https://nybrogatan38.com/menyer",
     "cheapest_beer": {
-      "name": "BRÄ UWEISSE - HEFE WEISSSE 5,1%, , AYINGER, GERMANY",
+      "name": "BRÄ UWEISSE - HEFE WEISSSE 5,1%, , AYINGER, GERMANY",
       "volume_cl": 33,
       "price_sek": 80,
       "kr_per_cl": 2.42
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -158,7 +161,7 @@
       "price_sek": 80,
       "kr_per_cl": 2.42
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -176,7 +179,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "HTTPSConnectionPool(host='riche-dev.wetail.dev', port=443): Max retries exceeded with url: /meny/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='riche-dev.wetail.dev', port=443) at 0x7fdc19d10a40>, 'Connection to riche-dev.wetail.dev timed out. (connect timeout=15)'))"
+    "stale_reason": "HTTPSConnectionPool(host='riche-dev.wetail.dev', port=443): Max retries exceeded with url: /meny/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='riche-dev.wetail.dev', port=443) at 0x7fd705e7b860>, 'Connection to riche-dev.wetail.dev timed out. (connect timeout=15)'))"
   },
   {
     "id": "soldaten_svejk",
@@ -186,12 +189,12 @@
     "lon": 18.0748,
     "source_url": "https://svejk.se/dryck/",
     "cheapest_beer": {
-      "name": "Bernard ljus, opastoriserad",
+      "name": "Bernard ljus, opastöriserad",
       "volume_cl": 50,
       "price_sek": 94,
       "kr_per_cl": 1.88
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -207,7 +210,7 @@
       "price_sek": 56,
       "kr_per_cl": 2.8
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -223,7 +226,7 @@
       "price_sek": 70,
       "kr_per_cl": 1.75
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   },
   {
@@ -239,7 +242,7 @@
       "price_sek": 78,
       "kr_per_cl": null
     },
-    "last_updated": "2026-06-10T10:06:21+00:00",
+    "last_updated": "2026-06-10T10:12:46+00:00",
     "stale": false
   }
 ]
