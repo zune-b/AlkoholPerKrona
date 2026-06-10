@@ -20,7 +20,11 @@ on a map. Prices are shown directly in map bubbles (gold = best kr/cl), tap one 
 ## Restaurants tracked
 
 Sturehof, Riche, Tures, Brasserie Godot, Teatergrillen, Brasserie Bobonne,
-Bistro Bestick, Bagatelle, Knut Östermalm, Lisa Elmqvist.
+Hillenberg, Nybrogatan 38, Grodan Grev Ture, Lisa Elmqvist.
+
+(Bistro Bestick, Bagatelle and Knut Östermalm were dropped — their sites
+are gone or unreachable — and replaced with Hillenberg, Nybrogatan 38 and
+Grodan Grev Ture.)
 
 Each has its own scraper at `scraper/restaurants/<id>.py`. Add or remove a
 restaurant by adding/removing one file (see `_template.py`).
@@ -34,11 +38,14 @@ python -m scraper.main
 # writes ../data/restaurants.json
 ```
 
-The current scrapers all use the generic `find_cheapest_beer` heuristic —
-they look for an "Öl"/"Beer" heading and pick the lowest-priced item. This
-will work for some sites and miss for others. For each site that misses,
-override `scrape()` in that restaurant's module with site-specific
-BeautifulSoup selectors. Keep overrides small (<30 lines).
+Parsers in `scraper/lib.py`: `find_cheapest_beer_svbr` for the Svenska
+Brasserier WordPress theme (Sturehof, Riche, Teatergrillen),
+`find_cheapest_beer_in_text` for PDF drink lists (Lisa Elmqvist,
+Hillenberg, Nybrogatan 38, Grodan), and the generic `find_cheapest_beer`
+heading heuristic as a fallback. Sites that don't publish beer prices at
+all (currently Brasserie Godot and Brasserie Bobonne) are kept and simply
+marked `stale` by the orchestrator. For a new site, override `scrape()`
+in that restaurant's module with site-specific selectors (<40 lines).
 
 ## Run the iOS app
 

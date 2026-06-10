@@ -6,7 +6,7 @@ META = {
     "address": "Storgatan 12, 114 51 Stockholm",
     "lat": 59.3349,
     "lon": 18.0820,
-    "source_url": "https://www.brasseriebobonne.se/meny",
+    "source_url": "https://bobonne.se/menyer/",
 }
 
 
