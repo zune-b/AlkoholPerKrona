@@ -1,45 +1,11 @@
 [
   {
-    "id": "bagatelle",
-    "name": "Bagatelle",
-    "address": "Östermalmstorg 2, 114 42 Stockholm",
-    "lat": 59.336,
-    "lon": 18.081,
-    "source_url": "https://www.bagatelle.se/meny",
-    "cheapest_beer": {
-      "name": "Husöl (placeholder)",
-      "volume_cl": 40,
-      "price_sek": 79,
-      "kr_per_cl": 1.98
-    },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "HTTPSConnectionPool(host='www.bagatelle.se', port=443): Max retries exceeded with url: /meny (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.bagatelle.se', port=443) at 0x7f6f3ae8d490>, 'Connection to www.bagatelle.se timed out. (connect timeout=15)'))"
-  },
-  {
-    "id": "bestick",
-    "name": "Bistro Bestick",
-    "address": "Karlavägen 41, 114 49 Stockholm",
-    "lat": 59.3398,
-    "lon": 18.0876,
-    "source_url": "https://www.bestick.nu/meny",
-    "cheapest_beer": {
-      "name": "Husöl (placeholder)",
-      "volume_cl": 50,
-      "price_sek": 89,
-      "kr_per_cl": 1.78
-    },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "HTTPSConnectionPool(host='www.bestick.nu', port=443): Max retries exceeded with url: /meny (Caused by NameResolutionError(\"HTTPSConnection(host='www.bestick.nu', port=443): Failed to resolve 'www.bestick.nu' ([Errno -3] Temporary failure in name resolution)\"))"
-  },
-  {
     "id": "bobonne",
     "name": "Brasserie Bobonne",
     "address": "Storgatan 12, 114 51 Stockholm",
     "lat": 59.3349,
     "lon": 18.082,
-    "source_url": "https://www.brasseriebobonne.se/meny",
+    "source_url": "https://bobonne.se/menyer/",
     "cheapest_beer": {
       "name": "Husöl (placeholder)",
       "volume_cl": 40,
@@ -48,7 +14,7 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "HTTPSConnectionPool(host='www.brasseriebobonne.se', port=443): Max retries exceeded with url: /meny (Caused by NameResolutionError(\"HTTPSConnection(host='www.brasseriebobonne.se', port=443): Failed to resolve 'www.brasseriebobonne.se' ([Errno -2] Name or service not known)\"))"
+    "stale_reason": "no beer found"
   },
   {
     "id": "godot",
@@ -56,7 +22,7 @@
     "address": "Grev Turegatan 36, 114 38 Stockholm",
     "lat": 59.3404,
     "lon": 18.079,
-    "source_url": "https://godot.se/meny/",
+    "source_url": "https://godot.se/pages/meny",
     "cheapest_beer": {
       "name": "Husöl (placeholder)",
       "volume_cl": 40,
@@ -65,24 +31,87 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "404 Client Error: Not Found for url: https://godot.se/meny/"
+    "stale_reason": "no beer found"
   },
   {
-    "id": "knut",
-    "name": "Knut Östermalm",
-    "address": "Riddargatan 6, 114 35 Stockholm",
-    "lat": 59.3338,
-    "lon": 18.0804,
-    "source_url": "https://www.knutostermalm.se/meny",
+    "id": "grodan",
+    "name": "Grodan Grev Ture",
+    "address": "Grev Turegatan 16, 114 46 Stockholm",
+    "lat": 59.3376,
+    "lon": 18.0758,
+    "source_url": "https://www.grodan.se/grevture",
     "cheapest_beer": {
-      "name": "Husöl (placeholder)",
-      "volume_cl": 50,
-      "price_sek": 79,
-      "kr_per_cl": 1.58
+      "name": "HEINEKEN",
+      "volume_cl": 33,
+      "price_sek": 92,
+      "kr_per_cl": 2.79
     },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "HTTPSConnectionPool(host='www.knutostermalm.se', port=443): Max retries exceeded with url: /meny (Caused by NameResolutionError(\"HTTPSConnection(host='www.knutostermalm.se', port=443): Failed to resolve 'www.knutostermalm.se' ([Errno -2] Name or service not known)\"))"
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
+  },
+  {
+    "id": "hillenberg",
+    "name": "Hillenberg",
+    "address": "Humlegårdsgatan 14, 114 46 Stockholm",
+    "lat": 59.3367,
+    "lon": 18.0758,
+    "source_url": "https://hillenberg.se/baren/",
+    "cheapest_beer": {
+      "name": "Spendrups signatur lager",
+      "volume_cl": null,
+      "price_sek": 71,
+      "kr_per_cl": null
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
+  },
+  {
+    "id": "international_bar_gamla_stan",
+    "name": "International Bar Gamla Stan",
+    "address": "Mälartorget 13, 111 27 Stockholm",
+    "lat": 59.3232,
+    "lon": 18.0673,
+    "source_url": "https://internationalbar.se/menu/",
+    "cheapest_beer": {
+      "name": "Carlsberg Export",
+      "volume_cl": null,
+      "price_sek": 45,
+      "kr_per_cl": null
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
+  },
+  {
+    "id": "international_bar_kungsholmen",
+    "name": "International Bar Kungsholmen",
+    "address": "Hantverkargatan 36, 112 21 Stockholm",
+    "lat": 59.3279,
+    "lon": 18.0399,
+    "source_url": "https://internationalbar.se/menu/",
+    "cheapest_beer": {
+      "name": "Carlsberg Export",
+      "volume_cl": null,
+      "price_sek": 45,
+      "kr_per_cl": null
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
+  },
+  {
+    "id": "international_bar_norrmalm",
+    "name": "International Bar Norrmalm",
+    "address": "Norrlandsgatan 23, 111 43 Stockholm",
+    "lat": 59.3358,
+    "lon": 18.0712,
+    "source_url": "https://internationalbar.se/menu/",
+    "cheapest_beer": {
+      "name": "Carlsberg Export",
+      "volume_cl": null,
+      "price_sek": 45,
+      "kr_per_cl": null
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
   },
   {
     "id": "lisa_elmqvist",
@@ -90,16 +119,47 @@
     "address": "Östermalms Saluhall, Nybrogatan 31, 114 39 Stockholm",
     "lat": 59.3361,
     "lon": 18.0795,
-    "source_url": "https://www.lisaelmqvist.se/meny",
+    "source_url": "https://www.lisaelmqvist.se/restaurang/restaurangmeny",
     "cheapest_beer": {
-      "name": "Husöl (placeholder)",
-      "volume_cl": 40,
-      "price_sek": 95,
-      "kr_per_cl": 2.38
+      "name": "Carlsberg Hof 4,2% Lager Danmark, EKO",
+      "volume_cl": null,
+      "price_sek": 63,
+      "kr_per_cl": null
     },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "404 Client Error: Not Found for url: https://www.lisaelmqvist.se/meny"
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
+  },
+  {
+    "id": "nybrogatan38",
+    "name": "Nybrogatan 38",
+    "address": "Nybrogatan 38, 114 40 Stockholm",
+    "lat": 59.3378,
+    "lon": 18.08,
+    "source_url": "https://nybrogatan38.com/menyer",
+    "cheapest_beer": {
+      "name": "BRÄ UWEISSE - HEFE WEISSSE 5,1%, , AYINGER, GERMANY",
+      "volume_cl": 33,
+      "price_sek": 80,
+      "kr_per_cl": 2.42
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
+  },
+  {
+    "id": "pet_sounds_bar",
+    "name": "Pet Sounds Bar",
+    "address": "Skånegatan 80, 116 37 Stockholm",
+    "lat": 59.3138,
+    "lon": 18.0837,
+    "source_url": "https://petsounds.se/bar",
+    "cheapest_beer": {
+      "name": "Omnipollo Fatamorgana Folk Session IPA (3.5%), 33 cl",
+      "volume_cl": 33,
+      "price_sek": 80,
+      "kr_per_cl": 2.42
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
   },
   {
     "id": "riche",
@@ -107,7 +167,7 @@
     "address": "Birger Jarlsgatan 4, 114 34 Stockholm",
     "lat": 59.3346,
     "lon": 18.0742,
-    "source_url": "https://www.riche.se/meny/",
+    "source_url": "https://riche-dev.wetail.dev/meny/",
     "cheapest_beer": {
       "name": "Husöl (placeholder)",
       "volume_cl": 40,
@@ -116,7 +176,23 @@
     },
     "last_updated": "2026-05-06T00:00:00+00:00",
     "stale": true,
-    "stale_reason": "HTTPSConnectionPool(host='www.riche.se', port=443): Max retries exceeded with url: /meny/ (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.riche.se'. (_ssl.c:1010)\")))"
+    "stale_reason": "HTTPSConnectionPool(host='riche-dev.wetail.dev', port=443): Max retries exceeded with url: /meny/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='riche-dev.wetail.dev', port=443) at 0x7f01ba5c8860>, 'Connection to riche-dev.wetail.dev timed out. (connect timeout=15)'))"
+  },
+  {
+    "id": "soldaten_svejk",
+    "name": "Soldaten Švejk",
+    "address": "Östgötagatan 35, 116 25 Stockholm",
+    "lat": 59.3125,
+    "lon": 18.0748,
+    "source_url": "https://svejk.se/dryck/",
+    "cheapest_beer": {
+      "name": "Bernard ljus, opastöriserad",
+      "volume_cl": 50,
+      "price_sek": 94,
+      "kr_per_cl": 1.88
+    },
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
   },
   {
     "id": "sturehof",
@@ -124,16 +200,15 @@
     "address": "Stureplan 2, 114 35 Stockholm",
     "lat": 59.3358,
     "lon": 18.0743,
-    "source_url": "https://www.sturehof.com/menyer-och-drycker/",
+    "source_url": "https://sturehof.com/meny/",
     "cheapest_beer": {
-      "name": "Husöl (placeholder)",
-      "volume_cl": 50,
-      "price_sek": 89,
-      "kr_per_cl": 1.78
+      "name": "Mariestads Continental, Swe",
+      "volume_cl": 20,
+      "price_sek": 56,
+      "kr_per_cl": 2.8
     },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "404 Client Error: Not Found for url: https://sturehof.com/menyer-och-drycker/"
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
   },
   {
     "id": "teatergrillen",
@@ -143,14 +218,13 @@
     "lon": 18.0764,
     "source_url": "https://teatergrillen.se/meny/",
     "cheapest_beer": {
-      "name": "Husöl (placeholder)",
+      "name": "Mariestads, Non Alcoholic, Sv (fat)",
       "volume_cl": 40,
-      "price_sek": 99,
-      "kr_per_cl": 2.48
+      "price_sek": 70,
+      "kr_per_cl": 1.75
     },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "no beer found"
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
   },
   {
     "id": "tures",
@@ -158,15 +232,14 @@
     "address": "Sibyllegatan 47, 114 42 Stockholm",
     "lat": 59.3373,
     "lon": 18.0822,
-    "source_url": "https://www.tures.se/meny",
+    "source_url": "https://www.tures.se/",
     "cheapest_beer": {
-      "name": "Husöl (placeholder)",
-      "volume_cl": 40,
-      "price_sek": 89,
-      "kr_per_cl": 2.23
+      "name": "San Miguel Gluten Free",
+      "volume_cl": null,
+      "price_sek": 78,
+      "kr_per_cl": null
     },
-    "last_updated": "2026-05-06T00:00:00+00:00",
-    "stale": true,
-    "stale_reason": "404 Client Error: Not Found for url: https://www.tures.se/meny"
+    "last_updated": "2026-06-10T08:51:05+00:00",
+    "stale": false
   }
 ]
