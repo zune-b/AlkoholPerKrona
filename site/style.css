@@ -205,7 +205,7 @@ html, body {
   letter-spacing: 0.01em;
   color: #fff;
   white-space: nowrap;
-  background: linear-gradient(160deg, var(--flame), var(--flame-deep));
+  background: linear-gradient(160deg, #888, #555);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 999px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -236,17 +236,34 @@ html, body {
   to   { opacity: 1; transform: translate(-50%, calc(-100% - 8px)); }
 }
 
+/* Price tiers: green ≤55 / yellow 56-79 / red ≥80 */
+.bubble--cheap {
+  background: linear-gradient(160deg, #5dcc7e, #2f8a52);
+  border-color: rgba(178, 232, 196, 0.42);
+}
+.bubble--mid {
+  background: linear-gradient(160deg, #f0c84a, #b88017);
+  color: #2b1d04;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 232, 170, 0.48);
+}
+.bubble--expensive {
+  background: linear-gradient(160deg, #ff7a5e, #c43a25);
+  border-color: rgba(255, 200, 180, 0.38);
+}
+
 .bubble--stale {
   background: linear-gradient(160deg, #7a7872, #565550);
   border-style: dashed;
   color: #d8d5cd;
 }
 
+/* "Best kr/cl in town" is an additive overlay: tier color stays, gold halo + crown announce it */
 .bubble--best {
-  background: linear-gradient(140deg, #ffd87a, var(--gold) 45%, var(--gold-deep));
-  color: #2b1d04;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 232, 170, 0.8);
+  border-color: rgba(255, 232, 170, 0.9);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3),
+              0 0 0 2px rgba(245, 185, 66, 0.55);
 }
 .bubble--best::before { /* pulsing halo */
   content: "";
@@ -457,6 +474,9 @@ html, body {
   font-size: 0.64rem;
   color: var(--ink-dim);
 }
+.row--cheap .row__price { color: #5dcc7e; }
+.row--mid .row__price { color: #e3b13a; }
+.row--expensive .row__price { color: #ff7a5e; }
 .row--stale .row__name,
 .row--stale .row__price { color: var(--stale); }
 .row--stale .row__beer { color: var(--ink-faint); }

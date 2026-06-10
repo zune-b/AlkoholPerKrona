@@ -78,5 +78,101 @@
     "lat": 59.3033,
     "lon": 18.0966,
     "url": "https://www.nyacarnegiebryggeriet.se/"
+  },
+  {
+    "id": "akkurat",
+    "name": "Akkurat",
+    "address": "Hornsgatan 18, 118 20 Stockholm",
+    "lat": 59.3192,
+    "lon": 18.0644,
+    "url": "https://akkurat.se/"
+  },
+  {
+    "id": "pickwick",
+    "name": "Pickwick",
+    "address": "Drottninggatan 25, 111 51 Stockholm",
+    "lat": 59.3358,
+    "lon": 18.0648,
+    "url": "https://pickwickpub.se/"
+  },
+  {
+    "id": "stampen",
+    "name": "Stampen",
+    "address": "Stora Nygatan 5, 111 27 Stockholm",
+    "lat": 59.3239,
+    "lon": 18.0692,
+    "url": "https://stampen.se/"
+  },
+  {
+    "id": "mosebacke",
+    "name": "Mosebacke Etablissement",
+    "address": "Mosebacke Torg 3, 116 46 Stockholm",
+    "lat": 59.3185,
+    "lon": 18.0719,
+    "url": "https://mosebacke.se/"
+  },
+  {
+    "id": "hairy_dog",
+    "name": "Hairy Dog",
+    "address": "Renstiernas Gata 16, 116 28 Stockholm",
+    "lat": 59.3104,
+    "lon": 18.0855,
+    "url": "https://hairydog.se/"
+  },
+  {
+    "id": "snottys",
+    "name": "Snotty's Bar",
+    "address": "Skånegatan 90, 116 37 Stockholm",
+    "lat": 59.3144,
+    "lon": 18.0838,
+    "url": "https://snottys.se/"
+  },
+  {
+    "id": "bonden_bar",
+    "name": "Bonden Bar",
+    "address": "Bondegatan 1C, 116 23 Stockholm",
+    "lat": 59.3149,
+    "lon": 18.0843,
+    "url": "https://bondenbar.se/"
+  },
+  {
+    "id": "norra_brunn",
+    "name": "Norra Brunn",
+    "address": "Surbrunnsgatan 33, 113 48 Stockholm",
+    "lat": 59.3445,
+    "lon": 18.0599,
+    "url": "https://norrabrunn.se/"
+  },
+  {
+    "id": "the_bagpipers_inn",
+    "name": "The Bagpiper's Inn",
+    "address": "Rörstrandsgatan 21, 113 40 Stockholm",
+    "lat": 59.3441,
+    "lon": 18.0421,
+    "url": "https://bagpipersinn.se/"
+  },
+  {
+    "id": "mckennas",
+    "name": "McKenna's",
+    "address": "Birger Jarlsgatan 16, 114 34 Stockholm",
+    "lat": 59.3354,
+    "lon": 18.0723,
+    "url": "https://mckennas.se/"
+  },
+  {
+    "id": "berns",
+    "name": "Berns",
+    "address": "Berzelii Park 9, 111 47 Stockholm",
+    "lat": 59.3334,
+    "lon": 18.0739,
+    "url": "https://www.berns.se/"
+  },
+  {
+    "id": "stockholm_brewing_taproom",
+    "name": "Stockholm Brewing Co. Taproom",
+    "address": "Tjurbergsgatan 27, 118 56 Stockholm",
+    "lat": 59.3072,
+    "lon": 18.0734,
+    "url": "https://stockholmbrewing.com/"
   }
 ]

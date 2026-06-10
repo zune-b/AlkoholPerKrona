@@ -6,6 +6,15 @@
 
   const FALLBACK_VOLUME_CL = 40; // rank volume-less beers as if 40 cl
 
+  // Price tiers (SEK): green ≤55, yellow 56-79, red ≥80. Stale or null beer = "stale".
+  const tierOf = (v) => {
+    if (v.stale || !v.cheapest_beer) return "stale";
+    const p = v.cheapest_beer.price_sek;
+    if (p <= 55) return "cheap";
+    if (p <= 79) return "mid";
+    return "expensive";
+  };
+
   // ---------- data ----------
 
   let venues;
@@ -68,7 +77,7 @@
   sorted.forEach((v, i) => {
     const b = v.cheapest_beer;
     const isBest = best && v.id === best.id;
-    const cls = ["bubble", v.stale ? "bubble--stale" : "", isBest ? "bubble--best" : ""]
+    const cls = ["bubble", `bubble--${tierOf(v)}`, isBest ? "bubble--best" : ""]
       .filter(Boolean)
       .join(" ");
     const label = b ? `${b.price_sek}:-` : "–";
@@ -106,7 +115,7 @@
       const b = v.cheapest_beer;
       const percl = b && b.kr_per_cl ? `${b.kr_per_cl.toFixed(2)} kr/cl` : b ? "okänd volym" : "";
       return `
-      <li class="row ${v.stale ? "row--stale" : ""}" style="--i:${i}" tabindex="0" role="button" data-id="${esc(v.id)}">
+      <li class="row row--${tierOf(v)}" style="--i:${i}" tabindex="0" role="button" data-id="${esc(v.id)}">
         <span class="row__rank">${i + 1}</span>
         <span class="row__name">${esc(v.name)}${v.stale ? " ⚠" : ""}</span>
         <span class="row__price">${b ? `${b.price_sek} kr` : "–"}<span class="row__percl">${esc(percl)}</span></span>
