@@ -1,7 +1,7 @@
 # alkoholperkrona
 
 iOS app showing the cheapest beer at 10 restaurants in Stockholm Östermalm,
-on a map. Tap a pin → see the price.
+on a map. Prices are shown directly in map bubbles (gold = best kr/cl), tap one for details, and a bottom "Topplista" panel ranks all venues by kr/cl.
 
 ```
 ┌──────────────────┐         ┌─────────────────────┐
