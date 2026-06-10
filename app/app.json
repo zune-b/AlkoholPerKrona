@@ -13,7 +13,7 @@
       }
     },
     "extra": {
-      "dataUrl": "https://raw.githubusercontent.com/zune-b/testla-/main/data/restaurants.json"
+      "dataUrl": "https://raw.githubusercontent.com/zune-b/AlkoholPerKrona/main/data/restaurants.json"
     },
     "plugins": []
   }

@@ -6,7 +6,7 @@ const FETCH_TIMEOUT_MS = 5000;
 
 const dataUrl: string =
   (Constants.expoConfig?.extra as { dataUrl?: string } | undefined)?.dataUrl ??
-  "https://raw.githubusercontent.com/zune-b/testla-/main/data/restaurants.json";
+  "https://raw.githubusercontent.com/zune-b/AlkoholPerKrona/main/data/restaurants.json";
 
 export async function loadRestaurants(): Promise<Restaurant[]> {
   try {
