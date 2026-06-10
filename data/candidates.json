@@ -166,5 +166,37 @@
     "lat": 59.3072,
     "lon": 18.0734,
     "url": "https://stockholmbrewing.com/"
+  },
+  {
+    "id": "tranan",
+    "name": "Tranan",
+    "address": "Karlbergsvägen 14 (Odenplan), 113 27 Stockholm",
+    "lat": 59.3428,
+    "lon": 18.0497,
+    "url": "https://www.restaurangtranan.se/"
+  },
+  {
+    "id": "tennstopet",
+    "name": "Tennstopet",
+    "address": "Dalagatan 50, 113 24 Stockholm",
+    "lat": 59.3434,
+    "lon": 18.047,
+    "url": "https://www.tennstopet.se/"
+  },
+  {
+    "id": "monks_cafe",
+    "name": "Monks Café & Brewery",
+    "address": "Wallingatan 38, 111 24 Stockholm",
+    "lat": 59.334,
+    "lon": 18.0535,
+    "url": "https://www.monkscafe.se/"
+  },
+  {
+    "id": "belgobaren",
+    "name": "Belgobaren",
+    "address": "Bryggargatan 12A, 111 21 Stockholm",
+    "lat": 59.3318,
+    "lon": 18.0582,
+    "url": "https://www.belgobaren.se/"
   }
 ]
