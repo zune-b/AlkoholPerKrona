@@ -1,9 +1,9 @@
 name: Scrape beer prices
 
+# Manual / on-demand only. The daily cron was removed at the user's
+# request — to refresh prices, trigger this workflow from the Actions tab
+# ("Run workflow") or push a change under scraper/ or data/candidates.json.
 on:
-  schedule:
-    # 04:17 UTC daily — off-peak, avoids the top of the hour
-    - cron: "17 4 * * *"
   workflow_dispatch:
   push:
     branches: [main]
