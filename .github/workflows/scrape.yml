@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v5
 
@@ -75,3 +76,11 @@ jobs:
           done
           echo "give up after 5 push attempts"
           exit 1
+
+      # Bot pushes don't fire push-triggered workflows (GitHub recursion
+      # guard), so the site would keep serving old prices — dispatch the
+      # Pages deploy explicitly instead.
+      - name: Redeploy website with fresh data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
